@@ -1,0 +1,53 @@
+<div class="sidebar">
+  <!-- Header -->
+  <div class="sidebar-header">
+    <h1>
+      <img src="assets/logo.png" alt="DEPOT Icon" class="logo" />DEPOT
+    </h1>
+  </div>
+
+  <!-- Service Container -->
+  <div class="service-container">
+    <h2>Service</h2>
+    <ul class="nav-links">
+      <li>
+        <button (click)="navigateTo('/dashboard')">
+          <img src="assets/dashboard.png" alt="Dashboard Icon" class="icon-dashboard" />Dashboard
+        </button>
+      </li>
+      <li>
+        <button (click)="navigateTo('/container')">
+          <img src="assets/container.png" alt="Container Icon" class="icon" />Container
+        </button>
+      </li>
+      <li>
+        <button (click)="navigateTo('/movement')">
+          <img src="assets/inout.png" alt="Movement Icon" class="icon" />Import/Export
+        </button>
+      </li>
+      <li>
+        <button (click)="navigateTo('/command')">
+          <img src="assets/command.png" alt="Command Icon" class="icon" />Command
+        </button>
+      </li>
+      <li>
+        <button (click)="navigateTo('/vehicle')">
+          <img src="assets/vehicle.png" alt="Vehicle Icon" class="icon" />Vehicle
+        </button>
+      </li>
+      <li>
+        <button (click)="navigateTo('/voyage')">
+          <img src="assets/voyage.png" alt="Voyage Icon" class="icon" />Voyage
+        </button>
+      </li>
+    </ul>
+  </div>
+  
+
+  <!-- Logout Button -->
+  <div class="logout">
+    <button (click)="onLogout()">
+      <img src="assets/logout.png" alt="Dashboard Icon" class="logout-icon" />Log Out
+    </button>
+  </div>
+</div>
