@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
-import { Router, RouterLink } from '@angular/router';
+import { Router, RouterLink, RouterLinkActive } from '@angular/router';
 
 @Component({
   selector: 'app-sidebar',
   standalone: true,
-  imports: [RouterLink],
+  imports: [RouterLinkActive, RouterLink],
   templateUrl: './sidebar.component.html',
   styleUrl: './sidebar.component.css'
 })
@@ -17,10 +17,6 @@ export class SidebarComponent {
 
     // Chuyển hướng về trang đăng nhập
     this.router.navigate(['/login']);
-  }
-
-  navigateTo(path: string) {
-    this.router.navigate([path]);
   }
 
 }

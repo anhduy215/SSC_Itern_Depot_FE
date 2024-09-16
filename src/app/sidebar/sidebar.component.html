@@ -11,32 +11,32 @@
     <h2>Service</h2>
     <ul class="nav-links">
       <li>
-        <button (click)="navigateTo('/dashboard')">
+        <button [routerLink]="['/dashboard']" routerLinkActive="active">
           <img src="assets/dashboard.png" alt="Dashboard Icon" class="icon-dashboard" />Dashboard
         </button>
       </li>
       <li>
-        <button (click)="navigateTo('/container')">
+        <button [routerLink]="['/container']" routerLinkActive="active">
           <img src="assets/container.png" alt="Container Icon" class="icon" />Container
         </button>
       </li>
       <li>
-        <button (click)="navigateTo('/movement')">
+        <button [routerLink]="['/movement']" routerLinkActive="active">
           <img src="assets/inout.png" alt="Movement Icon" class="icon" />Import/Export
         </button>
       </li>
       <li>
-        <button (click)="navigateTo('/command')">
+        <button [routerLink]="['/command']" routerLinkActive="active">
           <img src="assets/command.png" alt="Command Icon" class="icon" />Command
         </button>
       </li>
       <li>
-        <button (click)="navigateTo('/vehicle')">
+        <button [routerLink]="['/vehicle']" routerLinkActive="active">
           <img src="assets/vehicle.png" alt="Vehicle Icon" class="icon" />Vehicle
         </button>
       </li>
       <li>
-        <button (click)="navigateTo('/voyage')">
+        <button [routerLink]="['/voyage']" routerLinkActive="active">
           <img src="assets/voyage.png" alt="Voyage Icon" class="icon" />Voyage
         </button>
       </li>

@@ -7,7 +7,7 @@
     flex-direction: column;
 }
 
-.sidebar-header h1{
+.sidebar-header h1 {
     margin-left: 10px;
 }
 
@@ -46,16 +46,17 @@
 
 .nav-links button:hover {
     background-color: #303750;
-    /* Màu nền khi hover sáng lên một chút */
+    padding-left: 10px;
+    margin-left: 0;
+    display: block;
 }
 
-.nav-links button.focus  {
-    background-color: #303750; 
-    border-left: 4px solid #50B8E4; 
-    padding-left: 10px; 
-    margin-left: 0; 
-    display: block; 
-}
+
+.nav-links button.active {
+    background-color: #303750; /* Màu nền khi nút được chọn */
+    border-left: 4px solid #50B8E4; /* Thanh bên trái màu xanh */
+    color: #fff; /* Màu chữ khi nút được chọn */
+  }
 
 .logout button {
     width: 100%;
@@ -75,25 +76,30 @@
 
 /* cac icon o day */
 .logo {
-    width: 50px; /* Kích thước logo */
-    height: auto; /* Giữ tỷ lệ khung hình */
-    vertical-align: middle; /* Căn chỉnh logo với văn bản */
-  }
-  .icon {
+    width: 50px;
+    /* Kích thước logo */
+    height: auto;
+    /* Giữ tỷ lệ khung hình */
+    vertical-align: middle;
+    /* Căn chỉnh logo với văn bản */
+}
+
+.icon {
     width: 30px;
     height: auto;
     margin-right: 10px;
     vertical-align: middle;
-  }
-  .icon-dashboard {
+}
+
+.icon-dashboard {
     width: 20px;
     height: 20px;
     margin-right: 15px;
     margin-left: 5px;
-  }
-  
-  .logout-icon {
+}
+
+.logout-icon {
     width: 20px;
     height: 20px;
     margin-right: 10px;
-  }
+}
