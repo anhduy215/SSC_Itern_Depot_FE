@@ -1,0 +1,134 @@
+.dashboard-layout {
+    display: flex;
+}
+
+.app-sidebar {
+    position: fixed; /* Cố định vị trí của sidebar */
+    top: 0;
+    left: 0;
+    width: 250px; /* Chiều rộng của sidebar, bạn có thể thay đổi tùy theo nhu cầu */
+    height: 100vh; /* Chiều cao của sidebar bằng toàn bộ chiều cao của viewport */
+    overflow-y: auto; /* Cho phép cuộn nội dung trong sidebar nếu cần */
+    z-index: 1000; /* Đặt z-index cao hơn để đảm bảo sidebar nằm trên các phần tử khác */
+  }
+
+.main-content {
+    flex: 1;
+    background-color: #f5f5f5;
+}
+
+.dashboard-header {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    background-color: white;
+    color: #00537A;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.user-profile .profile-pic {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    /* Hình ảnh tròn */
+    margin-right: 10px;
+}
+
+/* container các bảng thống kê ---------------------------------------------------------------- */
+.statistics-container {
+    display: block;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 20px;
+    padding: 20px;
+    margin-top: 20px;
+}
+
+/* Cập nhật kiểu dáng cho khung overview */
+.overview {
+    display: flex;
+    /* Sử dụng flexbox để sắp xếp các metric */
+    justify-content: space-between;
+    /* Phân phối đều các metric */
+    padding: 20px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    height: 120px;
+    margin-bottom: 40px;
+}
+
+.metric {
+    flex: 1;
+    text-align: center;
+    padding-top: 30px;
+}
+
+.metric.metric-2 {
+    border-right: 1px solid rgba(0, 0, 0, 0.15);
+    border-left: 1px solid rgba(0, 0, 0, 0.15);
+}
+
+.metric p {
+    color: #8A92A6;
+    font-family: 'Actor', sans-serif;
+    font-size: 20px;
+    margin: 5px;
+}
+
+.metric h3 {
+    font-family: 'Inter', sans-serif;
+    font-size: 28px;
+    font-weight: lighter;
+    margin: 0;
+}
+
+/* container biểu đồ ở đây */
+.charts-container {
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    /* tỉ lệ 2 hàng 1:1 nếu muốn thêm hàng thì 1 1 1 */
+    grid-template-columns: 4fr 3fr; 
+    /* tỉ lệ của 2 cột 4:3 nếu muốn thêm cột thì khai thêm vào ví dụ 4 3 3 */
+    gap: 20px;
+}
+
+.daily {
+    grid-row: 1 / 2;
+    grid-column: 1 / 3;
+    height: 400px;
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.line {
+    grid-row: 2 / 3;
+    grid-column: 1 / 2;
+    width: auto;
+    height: 400px;
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.inventory {
+    grid-row: 2 / 3;
+    grid-column: 2 / 3;
+    width: auto;
+    height: 400px;
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.line canvas,
+.daily canvas,
+.inventory canvas {
+    width: 100%;
+    height: 100%;
+}

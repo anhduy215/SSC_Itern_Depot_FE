@@ -9,6 +9,9 @@
 
 .sidebar-header h1 {
     margin-left: 10px;
+    font-family: 'Oxygen', sans-serif;
+    font-weight: 100;
+    font-size: 21px;
 }
 
 /* Cập nhật CSS cho Service Container */

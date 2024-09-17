@@ -1,6 +1,55 @@
 <div class="dashboard-layout">
-    <app-sidebar></app-sidebar> <!-- Hiển thị SidebarComponent -->
-    <div class="main-content">
-      <router-outlet>dashboard</router-outlet> <!-- Nơi các routes con sẽ được render -->
+  <!-- Sidebar -->
+  <app-sidebar></app-sidebar> <!-- Hiển thị SidebarComponent -->
+
+  <!-- Main Content -->
+  <div class="main-content">
+    
+    <!-- Header -->
+    <header class="dashboard-header">
+      <div class="user-profile">
+        <img src="assets/profile.png" alt="User Profile" class="profile-pic" />
+      </div>
+    </header>
+    
+    <!-- Thống kê -->
+    <div class="statistics-container">
+      
+      <!-- Khung 1: Hiển thị 3 chỉ số chính -->
+      <div class="overview">
+        <div class="metric metric-1">
+            <h3>750K</h3>
+            <p>Container In Today</p>
+        </div>
+        <div class="metric metric-2">
+            <h3>7,500</h3>
+            <p>Container Out Today</p>
+        </div>
+        <div class="metric metric-3">
+            <h3>500k</h3>
+            <p>Total In Depot</p>
+        </div>
     </div>
+      
+      <!-- Khung cha cho 3 biểu đồ -->
+      <div class="charts-container">
+        <!-- Khung 2: Biểu đồ dạng cột thứ nhất -->
+        <div class="daily">
+          <canvas id="barChart1"></canvas>
+        </div>
+        
+        <!-- Khung 3: Biểu đồ dạng cột thứ hai -->
+        <div class="line">
+          <canvas id="barChart2"></canvas>
+        </div>
+      
+        <!-- Khung 4: Biểu đồ tròn hai vòng -->
+        <div class="inventory">
+          <canvas id="pieChart"></canvas>
+        </div>
+      </div>
+    </div>
+    
+    <router-outlet></router-outlet> <!-- Nơi các routes con sẽ được render -->
   </div>
+</div>
