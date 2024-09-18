@@ -264,7 +264,6 @@ export class DashboardComponent {
   
     // Giả sử bạn lấy dữ liệu từ API và cập nhật sau khi biểu đồ được tạo
     // Ví dụ dữ liệu giả
-  
     const stockUnder10Days = 300;
     const stockOver10Days = 700;
     const totalStock = stockOver10Days + stockUnder10Days;
@@ -278,7 +277,6 @@ export class DashboardComponent {
     inventoryChart.data.datasets[0].data = [stockUnder10Days, stockOver10Days];
     inventoryChart.update();
   }
-  
   //------------------------------------------------------------------------------------------------------------------
 }
 

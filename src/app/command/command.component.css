@@ -1,0 +1,27 @@
+.command-layout {
+    display: flex;
+}
+
+.main-content {
+    flex: 1;
+    background-color: #f5f5f5;
+}
+
+.command-header {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    background-color: white;
+    color: #00537A;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.user-profile .profile-pic {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    /* Hình ảnh tròn */
+    margin-right: 10px;
+}

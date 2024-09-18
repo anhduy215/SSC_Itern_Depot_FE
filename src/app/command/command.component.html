@@ -1,6 +1,11 @@
-<div class="dashboard-layout">
+<div class="command-layout">
     <app-sidebar></app-sidebar> <!-- Hiển thị SidebarComponent -->
     <div class="main-content">
+      <header class="command-header">
+        <div class="user-profile">
+          <img src="assets/profile.png" alt="User Profile" class="profile-pic" />
+        </div>
+      </header>
       <router-outlet>command</router-outlet> <!-- Nơi các routes con sẽ được render -->
     </div>
   </div>

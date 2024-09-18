@@ -1,6 +1,32 @@
-<div class="dashboard-layout">
-    <app-sidebar></app-sidebar> <!-- Hiển thị SidebarComponent -->
-    <div class="main-content">
-      <router-outlet>container</router-outlet> <!-- Nơi các routes con sẽ được render -->
+<div class="container-layout">
+  <app-sidebar></app-sidebar> <!-- Hiển thị SidebarComponent -->
+  <div class="main-content">
+    <header class="container-header">
+      <div class="user-profile">
+        <img src="assets/profile.png" alt="User Profile" class="profile-pic" />
+      </div>
+    </header>
+    <div class="container-actions">
+      <!-- Nút Add Container -->
+      <button id="addContainer" class="btn btn-primary">
+        <img src="assets/add-icon.png" alt="Add Icon" class="icon" /> Add Container
+      </button>
+
+      <!-- Nút Delete (Trash Bin Icon) -->
+      <button id="deleteContainer" class="btn btn-danger">
+        <img src="assets/trashbin-icon.png" alt="Delete Icon" class="icon" /> Delete
+      </button>
+
+      <!-- Khung Search -->
+      <div class="search-box">
+        <input type="text" id="searchContainer" placeholder="Search containers..." />
+        <button id="searchButton" class="btn btn-secondary">
+          <img src="assets/search-icon.png" alt="Search Icon" class="icon" /> Search
+        </button>
+      </div>
     </div>
+    <div class="container-management">
+    </div>
+
   </div>
+</div>

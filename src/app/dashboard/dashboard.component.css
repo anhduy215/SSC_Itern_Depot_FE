@@ -1,3 +1,4 @@
+/* qua component khác là copy những cái này */
 .dashboard-layout {
     display: flex;
 }
@@ -25,6 +26,7 @@
     /* Hình ảnh tròn */
     margin-right: 10px;
 }
+/* copy tới đây */
 
 /* container các bảng thống kê ---------------------------------------------------------------- */
 .statistics-container {

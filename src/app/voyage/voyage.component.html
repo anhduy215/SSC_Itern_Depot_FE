@@ -1,6 +1,11 @@
-<div class="dashboard-layout">
+<div class="voyage-layout">
     <app-sidebar></app-sidebar> <!-- Hiển thị SidebarComponent -->
     <div class="main-content">
+      <header class="voyage-header">
+        <div class="user-profile">
+          <img src="assets/profile.png" alt="User Profile" class="profile-pic" />
+        </div>
+      </header>
       <router-outlet>voyage</router-outlet> <!-- Nơi các routes con sẽ được render -->
     </div>
   </div>
