@@ -81,7 +81,7 @@
     display: grid;
     grid-template-rows: 1fr 1fr;
     /* tỉ lệ 2 hàng 1:1 nếu muốn thêm hàng thì 1 1 1 */
-    grid-template-columns: 4fr 3fr; 
+    grid-template-columns: 4fr 3fr;
     /* tỉ lệ của 2 cột 4:3 nếu muốn thêm cột thì khai thêm vào ví dụ 4 3 3 */
     gap: 20px;
 }
@@ -89,11 +89,23 @@
 .daily {
     grid-row: 1 / 2;
     grid-column: 1 / 3;
-    height: 400px;
+    height: 500px;
     background-color: white;
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.daily-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+}
+
+.daily-header h3 {
+    margin: 0;
+    font-size: 20px;
 }
 
 .line {
@@ -107,6 +119,18 @@
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
+.line-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+}
+
+.line-header h3 {
+    margin: 0;
+    font-size: 20px;
+}
+
 .inventory {
     grid-row: 2 / 3;
     grid-column: 2 / 3;
@@ -118,9 +142,34 @@
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
+.inventory-body {
+    display: flex; /* Sử dụng Flexbox */
+    align-items: center; /* Căn chỉnh theo chiều dọc */
+    gap: 20px; /* Khoảng cách giữa canvas và thông tin */
+  }
+
+  .stats {
+    flex: 1; /* Để thông tin chiếm không gian còn lại */
+    display: flex;
+    flex-direction: column;
+    gap: 10px; /* Khoảng cách giữa các mục thông tin */
+  }
+  #pieChart {
+    flex: 1; /* Để canvas chiếm không gian còn lại */
+    max-width: 250px;
+    max-height: 250px;
+  }
+.doticon{
+    width: 10px;
+    margin-right: 10px;
+}
 .line canvas,
-.daily canvas,
-.inventory canvas {
-    width: 100%;
-    height: 100%;
+.daily canvas {
+    max-width: 100%;
+    /* Đảm bảo canvas không vượt quá chiều rộng của bảng */
+    max-height: 95%;
+    /* Đảm bảo canvas không vượt quá chiều cao của bảng */
+    /* Tự động điều chỉnh chiều rộng */
+    height: auto;
+    /* Tự động điều chỉnh chiều cao */
 }
