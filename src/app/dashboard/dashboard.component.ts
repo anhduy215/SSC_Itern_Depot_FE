@@ -264,9 +264,10 @@ export class DashboardComponent {
   
     // Giả sử bạn lấy dữ liệu từ API và cập nhật sau khi biểu đồ được tạo
     // Ví dụ dữ liệu giả
-    const totalStock = 1000;
+  
     const stockUnder10Days = 300;
     const stockOver10Days = 700;
+    const totalStock = stockOver10Days + stockUnder10Days;
   
     // Cập nhật nội dung thông tin chart
     document.getElementById('totalStock')!.innerText = `Tổng tồn kho: ${totalStock}`;
