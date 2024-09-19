@@ -1,32 +1,73 @@
 <div class="container-layout">
   <app-sidebar></app-sidebar> <!-- Hiển thị SidebarComponent -->
   <div class="main-content">
+
     <header class="container-header">
       <div class="user-profile">
         <img src="assets/profile.png" alt="User Profile" class="profile-pic" />
       </div>
     </header>
-    <div class="container-actions">
-      <!-- Nút Add Container -->
-      <button id="addContainer" class="btn btn-primary">
-        <img src="assets/add-icon.png" alt="Add Icon" class="icon" /> Add Container
-      </button>
-
-      <!-- Nút Delete (Trash Bin Icon) -->
-      <button id="deleteContainer" class="btn btn-danger">
-        <img src="assets/trashbin-icon.png" alt="Delete Icon" class="icon" /> Delete
-      </button>
-
-      <!-- Khung Search -->
-      <div class="search-box">
-        <input type="text" id="searchContainer" placeholder="Search containers..." />
-        <button id="searchButton" class="btn btn-secondary">
-          <img src="assets/search-icon.png" alt="Search Icon" class="icon" /> Search
+    <div class="container-main">
+      <!-- khung nút bấm -->
+      <div class="container-actions">
+        <!-- Nút Add Container -->
+        <button id="addButton">
+          <img src="assets/add.png" alt="Add Icon" class="icon" /> Add Container
         </button>
+
+        <!-- Nút Delete (Trash Bin Icon) -->
+        <button id="deleteButton">
+          <img src="assets/trashbin.png" alt="Delete Icon" class="icon" /> Delete All Selected
+        </button>
+
+        <!-- Khung Search -->
+        <div class="search-box">
+          <img src="assets/search.png" alt="Search Icon" class="icon" />
+          <input type="text" id="searchContainer" placeholder="Search" />
+          <button id="searchButton"><img src="assets/arrow.png" alt="arrow Icon" class="icon" /></button>
+        </div>
+      </div>
+
+      <!-- bảng quản lý -->
+      <div class="container-management">
+        <header>
+          <div class="header-item checkbox">
+            <input type="checkbox" id="selectAll" />
+          </div>
+          <div class="header-item">ISO Code</div>
+          <div class="header-item">Owner</div>
+          <div class="header-item">Line Operator</div>
+          <div class="header-item" (click)="sortBySize()">Size
+            <img src="assets/sortarrow.png" class="sortarrow" [class.ascending]="isAscending">
+          </div>
+          <div class="header-item1">Position</div>
+        </header>
+
+        <body>
+          <div *ngFor="let container of paginatedContainers" class="body-row">
+            <div class="item-layout">
+            <div class="body-item checkbox">
+              <input type="checkbox" id="select" />
+            </div>
+            <div class="body-item">{{ container.isoCode }}</div>
+            <div class="body-item">{{ container.owner }}</div>
+            <div class="body-item">{{ container.lineOperator }}</div>
+            <div class="body-item">{{ container.size }}</div>
+            <div class="body-item">{{ container.position }}</div>
+            <div class="iconbtn">
+              <img src="assets/trashbin.png" class="delete-item">
+              <img src="assets/pen.png" class="update-item">
+            </div>
+            </div>
+          </div>
+        </body>
+
+        <footer>
+          <button (click)="previousPage()" [disabled]="currentPage === 1" class="btn previousbtn">Previous</button>
+          <div class="footer-item">Page {{ currentPage }} of {{ totalPages }}</div>
+          <button (click)="nextPage()" [disabled]="currentPage === totalPages" class="btn nextbtn">Next</button>
+        </footer>
       </div>
     </div>
-    <div class="container-management">
-    </div>
-
   </div>
 </div>

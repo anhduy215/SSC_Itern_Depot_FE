@@ -26,6 +26,7 @@
     /* Hình ảnh tròn */
     margin-right: 10px;
 }
+
 /* copy tới đây */
 
 /* container các bảng thống kê ---------------------------------------------------------------- */
@@ -145,26 +146,35 @@
 }
 
 .inventory-body {
-    display: flex; /* Sử dụng Flexbox */
-    align-items: center; /* Căn chỉnh theo chiều dọc */
-    gap: 20px; /* Khoảng cách giữa canvas và thông tin */
-  }
+    display: flex;
+    /* Sử dụng Flexbox */
+    align-items: center;
+    /* Căn chỉnh theo chiều dọc */
+    gap: 20px;
+    /* Khoảng cách giữa canvas và thông tin */
+}
 
-  .stats {
-    flex: 1; /* Để thông tin chiếm không gian còn lại */
+.stats {
+    flex: 1;
+    /* Để thông tin chiếm không gian còn lại */
     display: flex;
     flex-direction: column;
-    gap: 10px; /* Khoảng cách giữa các mục thông tin */
-  }
-  #pieChart {
-    flex: 1; /* Để canvas chiếm không gian còn lại */
+    gap: 10px;
+    /* Khoảng cách giữa các mục thông tin */
+}
+
+#pieChart {
+    flex: 1;
+    /* Để canvas chiếm không gian còn lại */
     max-width: 250px;
     max-height: 250px;
-  }
-.doticon{
+}
+
+.doticon {
     width: 10px;
     margin-right: 10px;
 }
+
 .line canvas,
 .daily canvas {
     max-width: 100%;

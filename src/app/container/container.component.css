@@ -5,8 +5,15 @@
 .main-content {
     flex: 1;
     background-color: #f5f5f5;
+    display: block;
 }
 
+.container-main {
+    display: block;
+    padding: 20px;
+}
+
+/* phần hiện thông tin thanh profile */
 .container-header {
     display: flex;
     justify-content: flex-end;
@@ -22,6 +29,174 @@
     width: 40px;
     height: 40px;
     border-radius: 50%;
-    /* Hình ảnh tròn */
     margin-right: 10px;
+}
+
+/* phần hiện các nút bấm search xóa add */
+.container-actions {
+    display: flex;
+    margin-bottom: 2px;
+}
+
+#addButton {
+    background-color: #000AFF;
+    border: #7280FF;
+    color: white;
+    font-size: 16px;
+    text-align: center;
+    border-radius: 8px;
+    border: 2px solid #7280FF;
+    cursor: pointer;
+    width: 200px;
+    height: 50px;
+}
+
+#addButton img.icon {
+    margin-right: 8px;
+    width: 15px;
+    height: 15px;
+}
+
+#addButton:hover {
+    background-color: #007BFF;
+}
+
+#deleteButton {
+    margin-left: 20px;
+    border: none;
+    background: none;
+    cursor: pointer;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#deleteButton img.icon {
+    margin-right: 8px;
+    width: 25px;
+    height: 25px;
+}
+
+.search-box {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    border: 2px solid #D0D5DD;
+    background: #FFFFFF;
+    padding: 10px;
+    height: 30px;
+    width: 300px;
+}
+
+.search-box img.icon {
+    margin-right: auto;
+    width: 20px;
+    height: 20px;
+}
+
+.search-box input {
+    width: max-content;
+    margin-right: auto;
+    border: none;
+    font-size: 20;
+}
+
+#searchButton {
+    margin-left: auto;
+    background-color: #000AFF;
+    color: white;
+    border: 2px solid #7280FF;
+    padding: 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#searchButton img {
+    height: 20px;
+    width: 20px;
+    border-color: #7280FF;
+}
+
+/* phần bảng quản lý */
+/* header hiện thuộc tính */
+.container-management header {
+    background-color: #F9FAFB;
+    border: 2px solid #EAECF0;
+    padding: 15px;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+}
+
+.container-management header:not(.checkbox) {
+    display: flex;
+    justify-content: flex-start;
+}
+
+.header-item:not(:first-child, :last-child) {
+    margin-right: 130px;
+}
+
+.header-item1 {
+    margin-left: 13px;
+}
+
+.sortarrow {
+    height: 10px;
+    width: 10px;
+    margin-left: 5px;
+    transition: transform 0.3s ease;
+}
+
+.sortarrow.ascending {
+    transform: rotate(180deg);
+}
+
+/* body hiện value */
+.container-management body{
+    margin: auto;
+}
+.item-layout {
+    background-color: #FFFFFF;
+    border: 2px solid #EAECF0;
+    padding: 15px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.body-item:not(:first-child, :last-child) {
+    margin-right: 130px;
+}
+.delete-item,
+.update-item {
+    height: 20px;
+    width: 20px;
+    margin: 10px;
+}
+
+/* footer hiện chuyển trang */
+.container-management footer {
+    background-color: #FFFFFF;
+    border: 2px solid #EAECF0;
+    padding: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+}
+
+.btn {
+    background-color: #FFFFFF;
+    border: 1px solid #D0D5DD;
+    border-radius: 8px;
+    width: 80px;
+    height: 35px;
+    cursor: pointer;
 }
