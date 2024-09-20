@@ -15,7 +15,7 @@ export class ContainerComponent {
   currentPage = 1;
   itemsPerPage = 5;
   //data mẫu xóa sau khi có api
-  containers = [
+  dataSample = [
     { isoCode: 'ABC123', owner: 'Company A', lineOperator: 'Operator A', size: 20, position: 'Block 1: B1, R1, T1' },
     { isoCode: 'XYZ456', owner: 'Company B', lineOperator: 'Operator B', size: 30, position: 'Block 2: B2, R2, T2' },
     { isoCode: 'LMN789', owner: 'Company C', lineOperator: 'Operator C', size: 40, position: 'Block 3: B3, R3, T3' },
@@ -27,15 +27,15 @@ export class ContainerComponent {
   ];
 
   //tính cắt từ thằng nào tới thằng nào cho trang đó
-  get paginatedContainers() {
+  get paginated() {
     const start = (this.currentPage - 1) * this.itemsPerPage;
     const end = start + this.itemsPerPage;
-    return this.containers.slice(start, end);
+    return this.dataSample.slice(start, end);
   }
 
   //lấy tổng trang = tổng item chia max item mỗi trang
   get totalPages() {
-    return Math.ceil(this.containers.length / this.itemsPerPage);
+    return Math.ceil(this.dataSample.length / this.itemsPerPage);
   }
 
   //page nhỏ hơn page tối đa thì thêm 1 còn page tối đa thì k chuyển dc nữa
@@ -55,7 +55,7 @@ export class ContainerComponent {
   // Hàm sắp xếp theo Size
   sortBySize() {
     this.isAscending = !this.isAscending; // Đảo ngược trạng thái sắp xếp
-    this.containers.sort((a, b) => {
+    this.dataSample.sort((a, b) => {
       return this.isAscending ? a.size - b.size : b.size - a.size;
     });
     this.currentPage = 1;

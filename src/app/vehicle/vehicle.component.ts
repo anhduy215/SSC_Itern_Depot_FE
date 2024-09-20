@@ -11,6 +11,7 @@ import { CommonModule } from '@angular/common';
   styleUrl: './vehicle.component.css'
 })
 export class VehicleComponent {
+  isDropdownOpen = false;
   isAscending = true;
   currentPage = 1;
   itemsPerPage = 5;
@@ -51,5 +52,10 @@ export class VehicleComponent {
       this.currentPage--;
     }
   }
+
+  toggleDropdown() {
+    this.isDropdownOpen = !this.isDropdownOpen;
+  }
+
 }
 

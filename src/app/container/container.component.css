@@ -1,4 +1,4 @@
-.container-layout {
+.layout {
     display: flex;
 }
 
@@ -8,13 +8,13 @@
     display: block;
 }
 
-.container-main {
+.main {
     display: block;
     padding: 20px;
 }
 
 /* phần hiện thông tin thanh profile */
-.container-header {
+.header {
     display: flex;
     justify-content: flex-end;
     align-items: center;
@@ -33,7 +33,7 @@
 }
 
 /* phần hiện các nút bấm search xóa add */
-.container-actions {
+.actions {
     display: flex;
     margin-bottom: 2px;
 }
@@ -125,7 +125,7 @@
 
 /* phần bảng quản lý */
 /* header hiện thuộc tính */
-.container-management header {
+.management header {
     background-color: #F9FAFB;
     border: 2px solid #EAECF0;
     padding: 15px;
@@ -133,7 +133,7 @@
     border-top-right-radius: 8px;
 }
 
-.container-management header:not(.checkbox) {
+.management header:not(.checkbox) {
     display: flex;
     justify-content: flex-start;
 }
@@ -163,7 +163,7 @@
 }
 
 /* body hiện value */
-.container-management body {
+.management body {
     margin: auto;
 }
 
@@ -194,7 +194,7 @@
 }
 
 /* footer hiện chuyển trang */
-.container-management footer {
+.management footer {
     background-color: #FFFFFF;
     border: 2px solid #EAECF0;
     padding: 15px;

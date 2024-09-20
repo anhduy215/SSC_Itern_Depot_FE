@@ -11,10 +11,17 @@
     <div class="main">
       <!-- khung nút bấm -->
       <div class="actions">
-        <!-- Nút Add Container -->
-        <button id="addButton">
-          <img src="assets/add.png" alt="Add Icon" class="icon" /> Add Command
-        </button>
+        <!-- Nút dropdown -->
+        <div class="dropdown">
+          <button class="dropbtn" (click)="toggleDropdown()">Container Truck
+            <img src="assets/drop.png" class="icon" />
+          </button>
+          <div class="dropdownContent" [class.show]="isDropdownOpen">
+            <a href="#">Add Command 1</a>
+            <a href="#">Add Command 2</a>
+            <a href="#">Add Command 3</a>
+          </div>
+        </div>
 
         <!-- Nút Delete (Trash Bin Icon) -->
         <button id="deleteButton">

@@ -1,15 +1,15 @@
-<div class="container-layout">
+<div class="layout">
   <app-sidebar></app-sidebar> <!-- Hiển thị SidebarComponent -->
   <div class="main-content">
 
-    <header class="container-header">
+    <header class="header">
       <div class="user-profile">
         <img src="assets/profile.png" alt="User Profile" class="profile-pic" />
       </div>
     </header>
-    <div class="container-main">
+    <div class="main">
       <!-- khung nút bấm -->
-      <div class="container-actions">
+      <div class="actions">
         <!-- Nút Add Container -->
         <button id="addButton">
           <img src="assets/add.png" alt="Add Icon" class="icon" /> Add Container
@@ -29,7 +29,7 @@
       </div>
 
       <!-- bảng quản lý -->
-      <div class="container-management">
+      <div class="management">
         <header>
           <div class="header-item checkbox">
             <input type="checkbox" id="selectAll" />
@@ -44,16 +44,16 @@
         </header>
 
         <body>
-          <div *ngFor="let container of paginatedContainers" class="body-row">
+          <div *ngFor="let data of paginated" class="body-row">
             <div class="item-layout">
             <div class="body-item checkbox">
               <input type="checkbox" id="select" />
             </div>
-            <div class="body-item">{{ container.isoCode }}</div>
-            <div class="body-item">{{ container.owner }}</div>
-            <div class="body-item">{{ container.lineOperator }}</div>
-            <div class="body-item">{{ container.size }}</div>
-            <div class="body-item">{{ container.position }}</div>
+            <div class="body-item">{{ data.isoCode }}</div>
+            <div class="body-item">{{ data.owner }}</div>
+            <div class="body-item">{{ data.lineOperator }}</div>
+            <div class="body-item">{{ data.size }}</div>
+            <div class="body-item">{{ data.position }}</div>
             <div class="iconbtn">
               <img src="assets/trashbin.png" class="delete-item">
               <img src="assets/pen.png" class="update-item">
