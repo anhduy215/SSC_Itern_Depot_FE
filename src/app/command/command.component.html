@@ -1,11 +1,78 @@
 <div class="command-layout">
-    <app-sidebar></app-sidebar> <!-- Hiển thị SidebarComponent -->
-    <div class="main-content">
-      <header class="command-header">
-        <div class="user-profile">
-          <img src="assets/profile.png" alt="User Profile" class="profile-pic" />
+  <app-sidebar></app-sidebar> <!-- Hiển thị SidebarComponent -->
+  <div class="main-content">
+
+    <header class="command-header">
+      <div class="user-profile">
+        <img src="assets/profile.png" alt="User Profile" class="profile-pic" />
+      </div>
+    </header>
+
+    <div class="command-main">
+      <!-- khung nút bấm -->
+      <div class="command-actions">
+        <!-- Nút Add Container -->
+        <button id="addButton">
+          <img src="assets/add.png" alt="Add Icon" class="icon" /> Add Command
+        </button>
+
+        <!-- Nút Delete (Trash Bin Icon) -->
+        <button id="deleteButton">
+          <img src="assets/trashbin.png" alt="Delete Icon" class="icon" /> Delete All Selected
+        </button>
+
+        <!-- Khung Search -->
+        <div class="search-box">
+          <img src="assets/search.png" alt="Search Icon" class="icon" />
+          <input type="text" id="searchContainer" placeholder="Search" />
+          <button id="searchButton"><img src="assets/arrow.png" alt="arrow Icon" class="icon" /></button>
         </div>
-      </header>
-      <router-outlet>command</router-outlet> <!-- Nơi các routes con sẽ được render -->
+      </div>
+
+      <!-- bảng quản lý -->
+      <div class="command-management">
+        <header>
+          <div class="header-item checkbox">
+            <input type="checkbox" id="selectAll" />
+          </div>
+          <div class="header-item1">Customer Name</div>
+          <div class="header-item2">Tax Code</div>
+          <div class="header-item3">Line Operator</div>
+          <div class="header-item4">Voyage Number</div>
+          <div class="header-item5" (click)="sortByQuantity()">Container Quantity
+            <img src="assets/sortarrow.png" class="sortarrow" [class.ascending]="sortField === 'quantity' && isAscending">
+          </div>
+          <div class="header-item6" (click)="sortByDate()">Deadline
+            <img src="assets/sortarrow.png" class="sortarrow" [class.ascending]="sortField === 'date' && isAscending">
+          </div>
+        </header>
+
+        <body>
+          <div *ngFor="let command of paginatedCommands" class="body-row">
+            <div class="item-layout">
+              <div class="body-item checkbox">
+                <input type="checkbox" id="select" />
+              </div>
+              <div class="body-item">{{ command.customerName }}</div>
+              <div class="body-item">{{ command.taxCode }}</div>
+              <div class="body-item">{{ command.lineOperator }}</div>
+              <div class="body-item">{{ command.voyageNumber }}</div>
+              <div class="body-item">{{ command.containerQuantity }}</div>
+              <div class="body-item">{{ command.deadline }}</div>
+              <div class="iconbtn">
+                <img src="assets/trashbin.png" class="delete-item">
+                <img src="assets/pen.png" class="update-item">
+              </div>
+            </div>
+          </div>
+        </body>
+
+        <footer>
+          <button (click)="previousPage()" [disabled]="currentPage === 1" class="btn previousbtn">Previous</button>
+          <div class="footer-item">Page {{ currentPage }} of {{ totalPages }}</div>
+          <button (click)="nextPage()" [disabled]="currentPage === totalPages" class="btn nextbtn">Next</button>
+        </footer>
+      </div>
     </div>
   </div>
+</div>
