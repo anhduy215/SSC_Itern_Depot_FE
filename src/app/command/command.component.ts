@@ -16,7 +16,7 @@ export class CommandComponent {
   itemsPerPage = 5;
   sortField: string = '';
   //data mẫu xóa sau khi có api
-  commands = [
+  dataSample = [
     { customerName: 'Company A', taxCode: '12345', lineOperator: 'Operator A', voyageNumber: 'VY123', containerQuantity: 5, deadline: '2024-09-30' },
     { customerName: 'Company B', taxCode: '67890', lineOperator: 'Operator B', voyageNumber: 'VY456', containerQuantity: 8, deadline: '2024-10-01' },
     { customerName: 'Company C', taxCode: '54321', lineOperator: 'Operator C', voyageNumber: 'VY789', containerQuantity: 10, deadline: '2024-10-05' },
@@ -29,15 +29,15 @@ export class CommandComponent {
   
 
   //tính cắt từ thằng nào tới thằng nào cho trang đó
-  get paginatedCommands() {
+  get paginated() {
     const start = (this.currentPage - 1) * this.itemsPerPage;
     const end = start + this.itemsPerPage;
-    return this.commands.slice(start, end);
+    return this.dataSample.slice(start, end);
   }
 
   //lấy tổng trang = tổng item chia max item mỗi trang
   get totalPages() {
-    return Math.ceil(this.commands.length / this.itemsPerPage);
+    return Math.ceil(this.dataSample.length / this.itemsPerPage);
   }
 
   //page nhỏ hơn page tối đa thì thêm 1 còn page tối đa thì k chuyển dc nữa
@@ -57,7 +57,7 @@ export class CommandComponent {
   sortByQuantity() {
     this.isAscending = !this.isAscending; // Đảo ngược trạng thái sắp xếp
     this.sortField = 'quantity';
-    this.commands.sort((a, b) => {
+    this.dataSample.sort((a, b) => {
       return this.isAscending ? a.containerQuantity - b.containerQuantity : b.containerQuantity - a.containerQuantity;
     });
     this.currentPage = 1;
@@ -66,7 +66,7 @@ export class CommandComponent {
   sortByDate() {
     this.isAscending = !this.isAscending; // Đảo ngược trạng thái sắp xếp
     this.sortField = 'date';
-    this.commands.sort((a, b) => {
+    this.dataSample.sort((a, b) => {
       const dateA = new Date(a.deadline);
       const dateB = new Date(b.deadline);
       return this.isAscending ? dateA.getTime() - dateB.getTime() : dateB.getTime() - dateA.getTime();

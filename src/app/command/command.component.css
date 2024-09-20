@@ -1,4 +1,4 @@
-.command-layout {
+.layout {
     display: flex;
 }
 
@@ -8,13 +8,13 @@
     display: block;
 }
 
-.command-main {
+.main {
     display: block;
     padding: 20px;
 }
 
 /* phần hiện thông tin thanh profile */
-.command-header {
+.header {
     display: flex;
     justify-content: flex-end;
     align-items: center;
@@ -33,7 +33,7 @@
 }
 
 /* phần hiện các nút bấm search xóa add */
-.command-actions {
+.actions {
     display: flex;
     margin-bottom: 2px;
 }
@@ -125,7 +125,7 @@
 
 /* phần bảng quản lý */
 /* header hiện thuộc tính */
-.command-management header {
+.management header {
     background-color: #F9FAFB;
     border: 2px solid #EAECF0;
     padding: 15px;
@@ -133,13 +133,13 @@
     border-top-right-radius: 8px;
 }
 
-.command-management header:not(.checkbox) {
+.management header:not(.checkbox) {
     display: flex;
     justify-content: flex-start;
 }
 
 .header-item1 {
-    margin-right: 80px;
+    margin-right: 70px;
 }
 
 .header-item2{
@@ -147,14 +147,14 @@
 }
 
 .header-item3 {
-    margin-right: 90px;
+    margin-right: 80px;
 }
 
 .header-item4 {
-    margin-right: 70px;
+    margin-right: 50px;
 }
 .header-item5{
-    margin-right: 95px;
+    margin-right: 105px;
 }
 
 .sortarrow {
@@ -169,7 +169,7 @@
 }
 
 /* body hiện value */
-.command-management body {
+.management body {
     margin: auto;
 }
 
@@ -184,7 +184,8 @@
 
 .body-item:not(:first-child) {
     flex: 1;
-    width: 200px;
+    width: auto;
+    max-width: 200px;
 }
 
 .delete-item,
@@ -199,7 +200,7 @@
 }
 
 /* footer hiện chuyển trang */
-.command-management footer {
+.management footer {
     background-color: #FFFFFF;
     border: 2px solid #EAECF0;
     padding: 15px;

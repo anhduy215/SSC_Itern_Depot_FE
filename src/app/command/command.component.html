@@ -1,16 +1,16 @@
-<div class="command-layout">
+<div class="layout">
   <app-sidebar></app-sidebar> <!-- Hiển thị SidebarComponent -->
   <div class="main-content">
 
-    <header class="command-header">
+    <header class="header">
       <div class="user-profile">
         <img src="assets/profile.png" alt="User Profile" class="profile-pic" />
       </div>
     </header>
 
-    <div class="command-main">
+    <div class="main">
       <!-- khung nút bấm -->
-      <div class="command-actions">
+      <div class="actions">
         <!-- Nút Add Container -->
         <button id="addButton">
           <img src="assets/add.png" alt="Add Icon" class="icon" /> Add Command
@@ -30,7 +30,7 @@
       </div>
 
       <!-- bảng quản lý -->
-      <div class="command-management">
+      <div class="management">
         <header>
           <div class="header-item checkbox">
             <input type="checkbox" id="selectAll" />
@@ -48,17 +48,17 @@
         </header>
 
         <body>
-          <div *ngFor="let command of paginatedCommands" class="body-row">
+          <div *ngFor="let data of paginated" class="body-row">
             <div class="item-layout">
               <div class="body-item checkbox">
                 <input type="checkbox" id="select" />
               </div>
-              <div class="body-item">{{ command.customerName }}</div>
-              <div class="body-item">{{ command.taxCode }}</div>
-              <div class="body-item">{{ command.lineOperator }}</div>
-              <div class="body-item">{{ command.voyageNumber }}</div>
-              <div class="body-item">{{ command.containerQuantity }}</div>
-              <div class="body-item">{{ command.deadline }}</div>
+              <div class="body-item">{{ data.customerName }}</div>
+              <div class="body-item">{{ data.taxCode }}</div>
+              <div class="body-item">{{ data.lineOperator }}</div>
+              <div class="body-item">{{ data.voyageNumber }}</div>
+              <div class="body-item">{{ data.containerQuantity }}</div>
+              <div class="body-item">{{ data.deadline }}</div>
               <div class="iconbtn">
                 <img src="assets/trashbin.png" class="delete-item">
                 <img src="assets/pen.png" class="update-item">

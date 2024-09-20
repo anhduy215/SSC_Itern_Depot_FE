@@ -1,13 +1,20 @@
-.vehicle-layout {
+.layout {
     display: flex;
 }
 
 .main-content {
     flex: 1;
     background-color: #f5f5f5;
+    display: block;
 }
 
-.vehicle-header {
+.main {
+    display: block;
+    padding: 20px;
+}
+
+/* phần hiện thông tin thanh profile */
+.header {
     display: flex;
     justify-content: flex-end;
     align-items: center;
@@ -22,6 +29,194 @@
     width: 40px;
     height: 40px;
     border-radius: 50%;
-    /* Hình ảnh tròn */
     margin-right: 10px;
+}
+
+/* phần hiện các nút bấm search xóa add */
+.actions {
+    display: flex;
+    margin-bottom: 2px;
+}
+
+#addButton {
+    background-color: #000AFF;
+    border: #7280FF;
+    color: white;
+    font-size: 16px;
+    text-align: center;
+    border-radius: 8px;
+    border: 2px solid #7280FF;
+    cursor: pointer;
+    width: 200px;
+    height: 50px;
+}
+
+#addButton img.icon {
+    margin-right: 8px;
+    width: 15px;
+    height: 15px;
+}
+
+#addButton:hover {
+    background-color: #007BFF;
+}
+
+#deleteButton {
+    margin-left: 20px;
+    border: none;
+    background: none;
+    cursor: pointer;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#deleteButton img.icon {
+    margin-right: 8px;
+    width: 25px;
+    height: 25px;
+}
+
+.search-box {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    border: 2px solid #D0D5DD;
+    background: #FFFFFF;
+    padding: 10px;
+    height: 30px;
+    width: 300px;
+}
+
+.search-box img.icon {
+    margin-right: auto;
+    width: 20px;
+    height: 20px;
+}
+
+.search-box input {
+    width: max-content;
+    margin-right: auto;
+    border: none;
+    font-size: 20;
+}
+
+#searchButton {
+    margin-left: auto;
+    background-color: #000AFF;
+    color: white;
+    border: 2px solid #7280FF;
+    padding: 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#searchButton img {
+    height: 20px;
+    width: 20px;
+    border-color: #7280FF;
+}
+
+/* phần bảng quản lý */
+/* header hiện thuộc tính */
+.management header {
+    background-color: #F9FAFB;
+    border: 2px solid #EAECF0;
+    padding: 15px;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+}
+
+.management header:not(.checkbox) {
+    display: flex;
+    justify-content: flex-start;
+}
+
+.header-item1 {
+    margin-right: 70px;
+}
+
+.header-item2{
+    margin-right: 110px;
+}
+
+.header-item3 {
+    margin-right: 100px;
+}
+
+.header-item4 {
+    margin-right: 80px;
+}
+.header-item5{
+    margin-right: 100px;
+}
+
+
+.sortarrow {
+    height: 10px;
+    width: 10px;
+    margin-left: 5px;
+    transition: transform 0.3s ease;
+}
+
+.sortarrow.ascending {
+    transform: rotate(180deg);
+}
+
+/* body hiện value */
+.management body {
+    margin: auto;
+}
+
+.item-layout {
+    background-color: #FFFFFF;
+    border: 2px solid #EAECF0;
+    padding: 15px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.body-item:not(:first-child) {
+    flex: 1;
+    width: auto;
+    max-width: 200px;
+}
+
+.delete-item,
+.update-item {
+    height: 20px;
+    width: 20px;
+    margin: 10px;
+}
+
+.iconbtn {
+    margin-left: auto;
+}
+
+/* footer hiện chuyển trang */
+.management footer {
+    background-color: #FFFFFF;
+    border: 2px solid #EAECF0;
+    padding: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+}
+
+.btn {
+    background-color: #FFFFFF;
+    border: 1px solid #D0D5DD;
+    border-radius: 8px;
+    width: 80px;
+    height: 35px;
+    cursor: pointer;
 }

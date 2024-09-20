@@ -1,11 +1,74 @@
-<div class="vehicle-layout">
-    <app-sidebar></app-sidebar> <!-- Hiển thị SidebarComponent -->
-    <div class="main-content">
-      <header class="vehicle-header">
-        <div class="user-profile">
-          <img src="assets/profile.png" alt="User Profile" class="profile-pic" />
+<div class="layout">
+  <app-sidebar></app-sidebar> <!-- Hiển thị SidebarComponent -->
+  <div class="main-content">
+
+    <header class="header">
+      <div class="user-profile">
+        <img src="assets/profile.png" alt="User Profile" class="profile-pic" />
+      </div>
+    </header>
+
+    <div class="main">
+      <!-- khung nút bấm -->
+      <div class="actions">
+        <!-- Nút Add Container -->
+        <button id="addButton">
+          <img src="assets/add.png" alt="Add Icon" class="icon" /> Add Command
+        </button>
+
+        <!-- Nút Delete (Trash Bin Icon) -->
+        <button id="deleteButton">
+          <img src="assets/trashbin.png" alt="Delete Icon" class="icon" /> Delete All Selected
+        </button>
+
+        <!-- Khung Search -->
+        <div class="search-box">
+          <img src="assets/search.png" alt="Search Icon" class="icon" />
+          <input type="text" id="searchContainer" placeholder="Search" />
+          <button id="searchButton"><img src="assets/arrow.png" alt="arrow Icon" class="icon" /></button>
         </div>
-      </header>
-      <router-outlet>vehicle</router-outlet> <!-- Nơi các routes con sẽ được render -->
+      </div>
+
+      <!-- bảng quản lý -->
+      <div class="management">
+        <header>
+          <div class="header-item checkbox">
+            <input type="checkbox" id="selectAll" />
+          </div>
+          <div class="header-item1">License Plate</div>
+          <div class="header-item2">Vehicle Capacity</div>
+          <div class="header-item3">Driver Name</div>
+          <div class="header-item4">Driver Contact</div>
+          <div class="header-item5">Company Name</div>
+          <div class="header-item6">Status</div>
+        </header>
+
+        <body>
+          <div *ngFor="let data of paginated" class="body-row">
+            <div class="item-layout">
+              <div class="body-item checkbox">
+                <input type="checkbox" id="select" />
+              </div>
+              <div class="body-item">{{ data.licensePlate }}</div>
+              <div class="body-item">{{ data.vehicleCapacity }}</div>
+              <div class="body-item">{{ data.driverName }}</div>
+              <div class="body-item">{{ data.driverContact }}</div>
+              <div class="body-item">{{ data.companyName }}</div>
+              <div class="body-item">{{ data.status }}</div>
+              <div class="iconbtn">
+                <img src="assets/trashbin.png" class="delete-item">
+                <img src="assets/pen.png" class="update-item">
+              </div>
+            </div>
+          </div>
+        </body>
+
+        <footer>
+          <button (click)="previousPage()" [disabled]="currentPage === 1" class="btn previousbtn">Previous</button>
+          <div class="footer-item">Page {{ currentPage }} of {{ totalPages }}</div>
+          <button (click)="nextPage()" [disabled]="currentPage === totalPages" class="btn nextbtn">Next</button>
+        </footer>
+      </div>
     </div>
   </div>
+</div>
