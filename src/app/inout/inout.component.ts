@@ -17,14 +17,15 @@ export class InoutComponent {
   sortField: string = '';
   //data mẫu xóa sau khi có api
   dataSample = [
-    { containerNumber: 'CN001', vehicle: 'Truck A', date: '2024-09-25', movementType: 'In' },
-    { containerNumber: 'CN002', vehicle: 'Truck B', date: '2024-10-01', movementType: 'Out' },
-    { containerNumber: 'CN003', vehicle: 'Truck C', date: '2024-10-10', movementType: 'In' },
-    { containerNumber: 'CN004', vehicle: 'Truck D', date: '2024-11-01', movementType: 'Out' },
-    { containerNumber: 'CN005', vehicle: 'Truck E', date: '2024-11-10', movementType: 'In' },
-    { containerNumber: 'CN006', vehicle: 'Truck F', date: '2024-12-01', movementType: 'Out' },
-    { containerNumber: 'CN007', vehicle: 'Truck G', date: '2024-12-15', movementType: 'In' }
+    { containerNumber: 'CN001', vehicle: 'Truck A', date: '2024-09-25', movementType: 'In', selected: false },
+    { containerNumber: 'CN002', vehicle: 'Truck B', date: '2024-10-01', movementType: 'Out', selected: false },
+    { containerNumber: 'CN003', vehicle: 'Truck C', date: '2024-10-10', movementType: 'In', selected: false },
+    { containerNumber: 'CN004', vehicle: 'Truck D', date: '2024-11-01', movementType: 'Out', selected: false },
+    { containerNumber: 'CN005', vehicle: 'Truck E', date: '2024-11-10', movementType: 'In', selected: false },
+    { containerNumber: 'CN006', vehicle: 'Truck F', date: '2024-12-01', movementType: 'Out', selected: false },
+    { containerNumber: 'CN007', vehicle: 'Truck G', date: '2024-12-15', movementType: 'In', selected: false }
   ];
+
 
 
   //tính cắt từ thằng nào tới thằng nào cho trang đó
@@ -63,4 +64,40 @@ export class InoutComponent {
     });
     this.currentPage = 1;
   }
+  allSelected: boolean = false;
+  // Toggle Select All checkboxes
+  toggleSelectAll(event: any) {
+    this.allSelected = event.target.checked;
+    this.paginated.forEach(item => item.selected = this.allSelected);
+  }
+
+  // Toggle individual checkbox
+  toggleCheckbox(data: any) {
+    data.selected = !data.selected;
+    this.allSelected = this.paginated.every(item => item.selected);
+  }
+  //pop up xóa
+  isPopupVisible: boolean = false;
+
+  // Mở popup khi bấm nút "Delete All Selected"
+  openDeleteConfirmation() {
+    this.isPopupVisible = !this.isPopupVisible;
+  }
+
+  // Xác nhận xóa
+  confirmDelete() {
+    this.isPopupVisible = false;
+    // Thực hiện logic xóa tại đây
+    this.deleteSelectedItems();
+  }
+
+  // Hủy xóa và đóng popup
+  cancelDelete() {
+    this.isPopupVisible = false;
+  }
+
+  // Hàm xóa các item đã chọn
+  deleteSelectedItems() {
+  }
 }
+

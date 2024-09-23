@@ -2,11 +2,12 @@ import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { SidebarComponent } from '../sidebar/sidebar.component';
 import { CommonModule } from '@angular/common';
+import { FormcommandComponent } from '../formcommand/formcommand.component';
 
 @Component({
   selector: 'app-command',
   standalone: true,
-  imports: [CommonModule, RouterOutlet, SidebarComponent],
+  imports: [CommonModule, RouterOutlet, SidebarComponent, FormcommandComponent],
   templateUrl: './command.component.html',
   styleUrl: './command.component.css'
 })
@@ -17,16 +18,14 @@ export class CommandComponent {
   sortField: string = '';
   //data mẫu xóa sau khi có api
   dataSample = [
-    { customerName: 'Company A', taxCode: '12345', lineOperator: 'Operator A', voyageNumber: 'VY123', containerQuantity: 5, deadline: '2024-09-30' },
-    { customerName: 'Company B', taxCode: '67890', lineOperator: 'Operator B', voyageNumber: 'VY456', containerQuantity: 8, deadline: '2024-10-01' },
-    { customerName: 'Company C', taxCode: '54321', lineOperator: 'Operator C', voyageNumber: 'VY789', containerQuantity: 10, deadline: '2024-10-05' },
-    { customerName: 'Company D', taxCode: '98765', lineOperator: 'Operator D', voyageNumber: 'VY101', containerQuantity: 3, deadline: '2024-10-10' },
-    { customerName: 'Company E', taxCode: '11223', lineOperator: 'Operator E', voyageNumber: 'VY234', containerQuantity: 12, deadline: '2024-11-01' },
-    { customerName: 'Company F', taxCode: '44556', lineOperator: 'Operator F', voyageNumber: 'VY567', containerQuantity: 15, deadline: '2024-11-05' },
-    { customerName: 'Company G', taxCode: '77889', lineOperator: 'Operator G', voyageNumber: 'VY890', containerQuantity: 7, deadline: '2024-12-01' }
+    { customerName: 'Company A', taxCode: '12345', lineOperator: 'Operator A', voyageNumber: 'VY123', containerQuantity: 5, deadline: '2024-09-30', selected: false },
+    { customerName: 'Company B', taxCode: '67890', lineOperator: 'Operator B', voyageNumber: 'VY456', containerQuantity: 8, deadline: '2024-10-01', selected: false },
+    { customerName: 'Company C', taxCode: '54321', lineOperator: 'Operator C', voyageNumber: 'VY789', containerQuantity: 10, deadline: '2024-10-05', selected: false },
+    { customerName: 'Company D', taxCode: '98765', lineOperator: 'Operator D', voyageNumber: 'VY101', containerQuantity: 3, deadline: '2024-10-10', selected: false },
+    { customerName: 'Company E', taxCode: '11223', lineOperator: 'Operator E', voyageNumber: 'VY234', containerQuantity: 12, deadline: '2024-11-01', selected: false },
+    { customerName: 'Company F', taxCode: '44556', lineOperator: 'Operator F', voyageNumber: 'VY567', containerQuantity: 15, deadline: '2024-11-05', selected: false },
+    { customerName: 'Company G', taxCode: '77889', lineOperator: 'Operator G', voyageNumber: 'VY890', containerQuantity: 7, deadline: '2024-12-01', selected: false }
   ];
-  
-  
 
   //tính cắt từ thằng nào tới thằng nào cho trang đó
   get paginated() {
@@ -72,5 +71,51 @@ export class CommandComponent {
       return this.isAscending ? dateA.getTime() - dateB.getTime() : dateB.getTime() - dateA.getTime();
     });
     this.currentPage = 1;
+  }
+
+  //gọi formfield
+  isFormVisible = false;
+
+  toggleForm() {
+    this.isFormVisible = !this.isFormVisible;
+  }
+  onCancel() {
+    this.isFormVisible = false; // Ẩn form khi cancel
+  }
+  allSelected: boolean = false;
+
+  // Toggle Select All checkboxes
+  toggleSelectAll(event: any) {
+    this.allSelected = event.target.checked;
+    this.paginated.forEach(item => item.selected = this.allSelected);
+  }
+
+  // Toggle individual checkbox
+  toggleCheckbox(data: any) {
+    data.selected = !data.selected;
+    this.allSelected = this.paginated.every(item => item.selected);
+  }
+  //pop up xóa
+  isPopupVisible: boolean = false;
+
+  // Mở popup khi bấm nút "Delete All Selected"
+  openDeleteConfirmation() {
+    this.isPopupVisible = !this.isPopupVisible;
+  }
+
+  // Xác nhận xóa
+  confirmDelete() {
+    this.isPopupVisible = false;
+    // Thực hiện logic xóa tại đây
+    this.deleteSelectedItems();
+  }
+
+  // Hủy xóa và đóng popup
+  cancelDelete() {
+    this.isPopupVisible = false;
+  }
+
+  // Hàm xóa các item đã chọn
+  deleteSelectedItems() {
   }
 }

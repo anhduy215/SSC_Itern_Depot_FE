@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { SidebarComponent } from '../sidebar/sidebar.component';
-import {FormfieldComponent} from '../formfield/formfield.component';
+import { FormfieldComponent } from '../formfield/formfield.component';
 import { CommonModule } from '@angular/common';
 
 @Component({
@@ -17,15 +17,16 @@ export class ContainerComponent {
   itemsPerPage = 5;
   //data mẫu xóa sau khi có api
   dataSample = [
-    { isoCode: 'ABC123', owner: 'Company A', lineOperator: 'Operator A', size: 20, position: 'Block 1: B1, R1, T1' },
-    { isoCode: 'XYZ456', owner: 'Company B', lineOperator: 'Operator B', size: 30, position: 'Block 2: B2, R2, T2' },
-    { isoCode: 'LMN789', owner: 'Company C', lineOperator: 'Operator C', size: 40, position: 'Block 3: B3, R3, T3' },
-    { isoCode: 'LMN789', owner: 'Company D', lineOperator: 'Operator C', size: 50, position: 'Block 3: B3, R3, T3' },
-    { isoCode: 'LMN789', owner: 'Company E', lineOperator: 'Operator C', size: 60, position: 'Block 3: B3, R3, T3' },
-    { isoCode: 'LMN789', owner: 'Company F', lineOperator: 'Operator C', size: 70, position: 'Block 3: B3, R3, T3' },
-    { isoCode: 'LMN789', owner: 'Company G', lineOperator: 'Operator C', size: 80, position: 'Block 3: B3, R3, T3' },
-    { isoCode: 'LMN789', owner: 'Company H', lineOperator: 'Operator C', size: 100, position: 'Block 3: B3, R3, T3' },
+    { isoCode: 'ABC123', owner: 'Company A', lineOperator: 'Operator A', size: 20, position: 'Block 1: B1, R1, T1', selected: false },
+    { isoCode: 'XYZ456', owner: 'Company B', lineOperator: 'Operator B', size: 30, position: 'Block 2: B2, R2, T2', selected: false },
+    { isoCode: 'LMN789', owner: 'Company C', lineOperator: 'Operator C', size: 40, position: 'Block 3: B3, R3, T3', selected: false },
+    { isoCode: 'LMN789', owner: 'Company D', lineOperator: 'Operator C', size: 50, position: 'Block 3: B3, R3, T3', selected: false },
+    { isoCode: 'LMN789', owner: 'Company E', lineOperator: 'Operator C', size: 60, position: 'Block 3: B3, R3, T3', selected: false },
+    { isoCode: 'LMN789', owner: 'Company F', lineOperator: 'Operator C', size: 70, position: 'Block 3: B3, R3, T3', selected: false },
+    { isoCode: 'LMN789', owner: 'Company G', lineOperator: 'Operator C', size: 80, position: 'Block 3: B3, R3, T3', selected: false },
+    { isoCode: 'LMN789', owner: 'Company H', lineOperator: 'Operator C', size: 100, position: 'Block 3: B3, R3, T3', selected: false },
   ];
+  
 
   //tính cắt từ start nào tới end cho trang đó
   get paginated() {
@@ -69,5 +70,42 @@ export class ContainerComponent {
   }
   onCancel() {
     this.isFormVisible = false; // Ẩn form khi cancel
+  }
+
+  // Toggle Select All checkboxes
+  allSelected: boolean = false;
+  
+  toggleSelectAll(event: any) {
+    this.allSelected = event.target.checked;
+    this.paginated.forEach(item => item.selected = this.allSelected);
+  }
+
+  // Toggle individual checkbox
+  toggleCheckbox(data: any) {
+    data.selected = !data.selected;
+    this.allSelected = this.paginated.every(item => item.selected);
+  }
+  //pop up xóa
+  isPopupVisible: boolean = false;
+
+  // Mở popup khi bấm nút "Delete All Selected"
+  openDeleteConfirmation() {
+    this.isPopupVisible = !this.isPopupVisible;
+  }
+
+  // Xác nhận xóa
+  confirmDelete() {
+    this.isPopupVisible = false;
+    // Thực hiện logic xóa tại đây
+    this.deleteSelectedItems();
+  }
+
+  // Hủy xóa và đóng popup
+  cancelDelete() {
+    this.isPopupVisible = false;
+  }
+
+  // Hàm xóa các item đã chọn
+  deleteSelectedItems() {
   }
 }

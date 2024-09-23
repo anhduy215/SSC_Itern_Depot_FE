@@ -13,56 +13,63 @@
       <div class="actions">
 
         <!-- Nút Delete (Trash Bin Icon) -->
-        <button id="deleteButton">
+        <button id="deleteButton" (click)="openDeleteConfirmation()">
           <img src="assets/trashbin.png" alt="Delete Icon" class="icon" /> Delete All Selected
         </button>
 
-        <!-- Khung Search -->
-        <div class="search-box">
-          <img src="assets/search.png" alt="Search Icon" class="icon" />
-          <input type="text" id="searchContainer" placeholder="Search" />
-          <button id="searchButton"><img src="assets/arrow.png" alt="arrow Icon" class="icon" /></button>
+        <div class="popup" [class.show]="isPopupVisible">
+        <p>Confirm delete</p>
+        <div class="popup-content">
+          <button (click)="cancelDelete()">Cancel</button>
+          <button (click)="confirmDelete()">OK</button>
         </div>
       </div>
 
-      <!-- bảng quản lý -->
-      <div class="management">
-        <header>
-          <div class="header-item checkbox">
-            <input type="checkbox" id="selectAll" />
-          </div>
-          <div class="header-item1">Container Number</div>
-          <div class="header-item2">Vehicle</div>
-          <div class="header-item3" (click)="sortByDate()">Date
-            <img src="assets/sortarrow.png" class="sortarrow" [class.ascending]="isAscending">
-          </div>
-          <div class="header-item4">Movement Type</div>
-        </header>
-
-        <body>
-          <div *ngFor="let data of paginated" class="body-row">
-            <div class="item-layout">
-              <div class="body-item checkbox">
-                <input type="checkbox" id="select" />
-              </div>
-              <div class="body-item">{{ data.containerNumber }}</div>
-              <div class="body-item">{{ data.vehicle }}</div>
-              <div class="body-item">{{ data.date }}</div>
-              <div class="body-item">{{ data.movementType }}</div>
-              <div class="iconbtn">
-                <img src="assets/trashbin.png" class="delete-item">
-                <img src="assets/pen.png" class="update-item">
-              </div>
-            </div>
-          </div>
-        </body>
-
-        <footer>
-          <button (click)="previousPage()" [disabled]="currentPage === 1" class="btn previousbtn">Previous</button>
-          <div class="footer-item">Page {{ currentPage }} of {{ totalPages }}</div>
-          <button (click)="nextPage()" [disabled]="currentPage === totalPages" class="btn nextbtn">Next</button>
-        </footer>
+      <!-- Khung Search -->
+      <div class="search-box">
+        <img src="assets/search.png" alt="Search Icon" class="icon" />
+        <input type="text" id="searchContainer" placeholder="Search" />
+        <button id="searchButton"><img src="assets/arrow.png" alt="arrow Icon" class="icon" /></button>
       </div>
     </div>
+
+    <!-- bảng quản lý -->
+    <div class="management">
+      <header>
+        <div class="header-item checkbox">
+          <input type="checkbox" id="selectAll" (change)="toggleSelectAll($event)"/>
+        </div>
+        <div class="header-item1">Container Number</div>
+        <div class="header-item2">Vehicle</div>
+        <div class="header-item3" (click)="sortByDate()">Date
+          <img src="assets/sortarrow.png" class="sortarrow" [class.ascending]="isAscending">
+        </div>
+        <div class="header-item4">Movement Type</div>
+      </header>
+
+      <body>
+        <div *ngFor="let data of paginated" class="body-row">
+          <div class="item-layout">
+            <div class="body-item checkbox">
+              <input type="checkbox" id="select" [checked]="data.selected" (change)="toggleCheckbox(data)"/>
+            </div>
+            <div class="body-item">{{ data.containerNumber }}</div>
+            <div class="body-item">{{ data.vehicle }}</div>
+            <div class="body-item">{{ data.date }}</div>
+            <div class="body-item">{{ data.movementType }}</div>
+            <div class="iconbtn">
+              <img src="assets/trashbin.png" class="delete-item"(click)="openDeleteConfirmation()">
+            </div>
+          </div>
+        </div>
+      </body>
+
+      <footer>
+        <button (click)="previousPage()" [disabled]="currentPage === 1" class="btn previousbtn">Previous</button>
+        <div class="footer-item">Page {{ currentPage }} of {{ totalPages }}</div>
+        <button (click)="nextPage()" [disabled]="currentPage === totalPages" class="btn nextbtn">Next</button>
+      </footer>
+    </div>
   </div>
+</div>
 </div>

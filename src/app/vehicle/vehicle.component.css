@@ -60,32 +60,35 @@
 .dropdownContent {
     display: none;
     position: absolute;
-    background-color: #f9f9f9; /* Màu nền cho dropdown */
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    background-color: #f9f9f9;
+    /* Màu nền cho dropdown */
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
     z-index: 1;
-  }
-  .show {
+}
+
+.show {
     display: block;
     width: 200px;
-  }
-  
-  /* Dropdown items */
-  .dropdownContent{
+}
+
+/* Dropdown items */
+.dropdownContent {
     margin-top: 5px;
     border: 1px solid #000000;
     border-radius: 8px;
-  }
-  .dropdownContent a {
+}
+
+.dropdownContent a {
     color: black;
     padding: 12px 16px;
     text-decoration: none;
     display: block;
     transition: 0.3s;
-  }
-  
-  .dropdownContent a:hover {
+}
+
+.dropdownContent a:hover {
     background-color: rgb(191, 223, 238, 0.5);
-  }
+}
 
 #deleteButton {
     margin-left: 20px;
@@ -168,19 +171,20 @@
     margin-right: 70px;
 }
 
-.header-item2{
-    margin-right: 110px;
+.header-item2 {
+    margin-right: 120px;
 }
 
 .header-item3 {
-    margin-right: 100px;
+    margin-right: 110px;
 }
 
 .header-item4 {
-    margin-right: 80px;
+    margin-right: 90px;
 }
-.header-item5{
-    margin-right: 100px;
+
+.header-item5 {
+    margin-right: 105px;
 }
 
 
@@ -226,6 +230,10 @@
     margin-left: auto;
 }
 
+.iconbtn img {
+    cursor: pointer;
+}
+
 /* footer hiện chuyển trang */
 .management footer {
     background-color: #FFFFFF;
@@ -245,4 +253,42 @@
     width: 80px;
     height: 35px;
     cursor: pointer;
+}
+
+/* pop up delete */
+.popup {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    border: 2px solid #000000;
+    padding: 20px;
+    z-index: 1000;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: center;
+}
+
+.popup.show {
+    display: block;
+}
+
+.popup-content {
+    display: flex;
+    justify-content: space-between;
+}
+
+.popup-content button {
+    margin: 10px;
+    padding: 10px;
+    border: none;
+    background-color: #00537A;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.popup-content button:hover {
+    background-color: #003f5a;
 }

@@ -20,9 +20,17 @@
         </div>
 
         <!-- Nút Delete (Trash Bin Icon) -->
-        <button id="deleteButton">
+        <button id="deleteButton" (click)="openDeleteConfirmation()">
           <img src="assets/trashbin.png" alt="Delete Icon" class="icon" /> Delete All Selected
         </button>
+
+        <div class="popup" [class.show]="isPopupVisible">
+          <p>Confirm delete</p>
+          <div class="popup-content">
+            <button (click)="cancelDelete()">Cancel</button>
+            <button (click)="confirmDelete()">OK</button>
+          </div>
+        </div>
 
         <!-- Khung Search -->
         <div class="search-box">
@@ -36,7 +44,7 @@
       <div class="management">
         <header>
           <div class="header-item checkbox">
-            <input type="checkbox" id="selectAll" />
+            <input type="checkbox" id="selectAll" (change)="toggleSelectAll($event)"/>
           </div>
           <div class="header-item1">ISO Code</div>
           <div class="header-item2">Owner</div>
@@ -50,18 +58,18 @@
         <body>
           <div *ngFor="let data of paginated" class="body-row">
             <div class="item-layout">
-            <div class="body-item checkbox">
-              <input type="checkbox" id="select" />
-            </div>
-            <div class="body-item">{{ data.isoCode }}</div>
-            <div class="body-item">{{ data.owner }}</div>
-            <div class="body-item">{{ data.lineOperator }}</div>
-            <div class="body-item">{{ data.size }}</div>
-            <div class="body-item">{{ data.position }}</div>
-            <div class="iconbtn">
-              <img src="assets/trashbin.png" class="delete-item">
-              <img src="assets/pen.png" class="update-item">
-            </div>
+              <div class="body-item checkbox">
+                <input type="checkbox" id="select" [checked]="data.selected" (change)="toggleCheckbox(data)"/>
+              </div>
+              <div class="body-item">{{ data.isoCode }}</div>
+              <div class="body-item">{{ data.owner }}</div>
+              <div class="body-item">{{ data.lineOperator }}</div>
+              <div class="body-item">{{ data.size }}</div>
+              <div class="body-item">{{ data.position }}</div>
+              <div class="iconbtn">
+                <img src="assets/trashbin.png" class="delete-item" (click)="openDeleteConfirmation()">
+                <img src="assets/pen.png" class="update-item" (click)="toggleForm()">
+              </div>
             </div>
           </div>
         </body>

@@ -116,15 +116,15 @@
 }
 
 .header-item1 {
-    margin-right: 160px;
+    margin-right: 170px;
 }
 
-.header-item2{
+.header-item2 {
     margin-right: 250px;
 }
 
 .header-item3 {
-    margin-right: 170px;
+    margin-right: 190px;
 }
 
 .sortarrow {
@@ -168,6 +168,10 @@
     margin-left: auto;
 }
 
+.iconbtn img {
+    cursor: pointer;
+}
+
 /* footer hiện chuyển trang */
 .management footer {
     background-color: #FFFFFF;
@@ -187,4 +191,80 @@
     width: 80px;
     height: 35px;
     cursor: pointer;
+}
+
+/* pop up delete */
+.popup {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    border: 2px solid #000000;
+    padding: 20px;
+    z-index: 1000;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: center;
+}
+
+.popup.show {
+    display: block;
+}
+
+.popup-content {
+    display: flex;
+    justify-content: space-between;
+}
+
+.popup-content button {
+    margin: 10px;
+    padding: 10px;
+    border: none;
+    background-color: #00537A;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.popup-content button:hover {
+    background-color: #003f5a;
+}
+
+/* pop up delete */
+.popup {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    border: 2px solid #000000;
+    padding: 20px;
+    z-index: 1000;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: center;
+}
+
+.popup.show {
+    display: block;
+}
+
+.popup-content {
+    display: flex;
+    justify-content: space-between;
+}
+
+.popup-content button {
+    margin: 10px;
+    padding: 10px;
+    border: none;
+    background-color: #00537A;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.popup-content button:hover {
+    background-color: #003f5a;
 }

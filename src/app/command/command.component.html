@@ -12,14 +12,26 @@
       <!-- khung nút bấm -->
       <div class="actions">
         <!-- Nút Add Container -->
-        <button id="addButton">
+        <button id="addButton" (click)="toggleForm()">
           <img src="assets/add.png" alt="Add Icon" class="icon" /> Add Command
         </button>
+        <!-- gọi formfield add container -->
+        <div *ngIf="isFormVisible" class="form-container">
+          <app-formcommand (cancel)="onCancel()"></app-formcommand> <!-- Gọi FormFieldComponent ở đây -->
+        </div>
 
         <!-- Nút Delete (Trash Bin Icon) -->
-        <button id="deleteButton">
+        <button id="deleteButton" (click)="openDeleteConfirmation()">
           <img src="assets/trashbin.png" alt="Delete Icon" class="icon" /> Delete All Selected
         </button>
+
+        <div class="popup" [class.show]="isPopupVisible">
+          <p>Confirm delete</p>
+          <div class="popup-content">
+            <button (click)="cancelDelete()">Cancel</button>
+            <button (click)="confirmDelete()">OK</button>
+          </div>
+        </div>
 
         <!-- Khung Search -->
         <div class="search-box">
@@ -33,7 +45,7 @@
       <div class="management">
         <header>
           <div class="header-item checkbox">
-            <input type="checkbox" id="selectAll" />
+            <input type="checkbox" id="selectAll" (change)="toggleSelectAll($event)" />
           </div>
           <div class="header-item1">Customer Name</div>
           <div class="header-item2">Tax Code</div>
@@ -51,7 +63,7 @@
           <div *ngFor="let data of paginated" class="body-row">
             <div class="item-layout">
               <div class="body-item checkbox">
-                <input type="checkbox" id="select" />
+                <input type="checkbox" id="select" [checked]="data.selected" (change)="toggleCheckbox(data)" />
               </div>
               <div class="body-item">{{ data.customerName }}</div>
               <div class="body-item">{{ data.taxCode }}</div>
@@ -60,8 +72,8 @@
               <div class="body-item">{{ data.containerQuantity }}</div>
               <div class="body-item">{{ data.deadline }}</div>
               <div class="iconbtn">
-                <img src="assets/trashbin.png" class="delete-item">
-                <img src="assets/pen.png" class="update-item">
+                <img src="assets/trashbin.png" class="delete-item"(click)="openDeleteConfirmation()">
+                <img src="assets/pen.png" class="update-item" (click)="toggleForm()">
               </div>
             </div>
           </div>

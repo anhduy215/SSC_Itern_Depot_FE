@@ -28,6 +28,7 @@ input {
 
 .iso button {
   margin-left: 10px;
+  cursor: pointer;
   background: none;
   border: none;
 }

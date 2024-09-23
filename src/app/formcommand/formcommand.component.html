@@ -1,0 +1,54 @@
+<div class="form-container">
+    <form [formGroup]="containerForm" (ngSubmit)="onSubmit()">
+
+      <label for="CustomerName">Customer Name:</label>
+      <input id="CustomerName" formControlName="CustomerName" type="text" placeholder="Customer Name"/><br />
+
+      <label for="TaxCode">Tax Code:</label>
+      <input id="TaxCode" formControlName="TaxCode" type="text" placeholder="Tax Code"/><br />
+
+      <label for="lineOperator">Line Operator:</label>
+      <select id="lineOperator" formControlName="lineOperator">
+        <option value="lineOperator1">lineOperator 1</option>
+        <option value="lineOperator2">lineOperator 2</option>
+      </select><br />
+  
+      <label for="Voyage">Voyage:</label>
+      <select id="Voyage" formControlName="Voyage">
+        <option value="Voyage1">Voyage 1</option>
+        <option value="Voyage2">Voyage 2</option>
+      </select><br />
+  
+      <label for="Movement">Movement Type:</label>
+      <select id="Movement" formControlName="Movement">
+        <option value="Movement1">Movement 1</option>
+        <option value="Movement2">Movement 2</option>
+      </select><br />
+  
+      <!-- Date Picker for Manufacturer Date -->
+      <label for="manufacturerDate">Manufacturer Date:</label>
+      <input id="manufacturerDate" formControlName="manufacturerDate" type="date" /><br />
+  
+      <!-- Input for Maximum Weight -->
+      <label for="maxWeight">Maximum Weight:</label>
+      <input id="maxWeight" formControlName="maxWeight" type="number" placeholder="Enter Maximum Weight" /><br />
+  
+      <!-- Input for Tare Weight -->
+      <label for="tareWeight">Tare Weight:</label>
+      <input id="tareWeight" formControlName="tareWeight" type="number" placeholder="Enter Tare Weight" /><br />
+  
+      <!-- Input for ISO -->
+      <label for="iso">ISO:</label>
+      <div class="iso">
+        <input id="iso" formControlName="iso" type="text" placeholder="Enter ISO" />
+        <button>
+          <img src="assets/search.png" alt="Add Icon" class="icon" />
+        </button>
+      </div>
+      <!-- Submit Button -->
+      <div class="button">
+        <button class="cancelbtn" type="cancel" (click)="cancelForm()">Cancel</button>
+        <button class="submitbtn" type="submit" [disabled]="containerForm.invalid">Submit</button>
+      </div>
+    </form>
+  </div>
