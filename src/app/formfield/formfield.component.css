@@ -1,0 +1,82 @@
+.form-container {
+  padding: 20px;
+  width: 300px;
+  margin: 20px auto;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  /* Sắp xếp các trường theo cột */
+}
+select{
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+input {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.iso {
+  display: flexbox;
+  justify-content: center;
+  align-items: center;
+}
+
+.iso button {
+  margin-left: 10px;
+  background: none;
+  border: none;
+}
+
+.iso button img {
+  width: 18px;
+  height: 18px;
+}
+
+/*nút bấm*/
+.button {
+  display: flex;
+  justify-content: space-between;
+}
+
+
+.submitbtn {
+  background-color: #000AFF;
+  border: #7280FF;
+  color: white;
+  font-size: 16px;
+  text-align: center;
+  border-radius: 8px;
+  border: 2px solid #7280FF;
+  cursor: pointer;
+  width: 100px;
+  height: 40px;
+  border: none;
+  margin-top: auto;
+}
+
+.submitbtn:hover {
+  background-color: #007BFF;
+}
+
+.cancelbtn {
+  background-color: #C8C9D7;
+  color: black;
+  font-size: 16px;
+  text-align: center;
+  border-radius: 8px;
+  cursor: pointer;
+  width: 100px;
+  height: 40px;
+  margin-top: 10px;
+  padding: 10px;
+  border: none;
+}
+
+.cancelbtn:hover {
+  background-color: #d9dae6;
+}

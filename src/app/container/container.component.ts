@@ -1,12 +1,13 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { SidebarComponent } from '../sidebar/sidebar.component';
+import {FormfieldComponent} from '../formfield/formfield.component';
 import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-container',
   standalone: true,
-  imports: [CommonModule, RouterOutlet, SidebarComponent],
+  imports: [CommonModule, RouterOutlet, SidebarComponent, FormfieldComponent],
   templateUrl: './container.component.html',
   styleUrl: './container.component.css'
 })
@@ -26,7 +27,7 @@ export class ContainerComponent {
     { isoCode: 'LMN789', owner: 'Company H', lineOperator: 'Operator C', size: 100, position: 'Block 3: B3, R3, T3' },
   ];
 
-  //tính cắt từ thằng nào tới thằng nào cho trang đó
+  //tính cắt từ start nào tới end cho trang đó
   get paginated() {
     const start = (this.currentPage - 1) * this.itemsPerPage;
     const end = start + this.itemsPerPage;
@@ -59,5 +60,14 @@ export class ContainerComponent {
       return this.isAscending ? a.size - b.size : b.size - a.size;
     });
     this.currentPage = 1;
+  }
+  //gọi formfield
+  isFormVisible = false;
+
+  toggleForm() {
+    this.isFormVisible = !this.isFormVisible;
+  }
+  onCancel() {
+    this.isFormVisible = false; // Ẩn form khi cancel
   }
 }

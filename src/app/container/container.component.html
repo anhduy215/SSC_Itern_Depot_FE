@@ -11,9 +11,13 @@
       <!-- khung nút bấm -->
       <div class="actions">
         <!-- Nút Add Container -->
-        <button id="addButton">
+        <button id="addButton" (click)="toggleForm()">
           <img src="assets/add.png" alt="Add Icon" class="icon" /> Add Container
         </button>
+        <!-- gọi formfield add container -->
+        <div *ngIf="isFormVisible" class="form-container">
+          <app-form-field (cancel)="onCancel()"></app-form-field> <!-- Gọi FormFieldComponent ở đây -->
+        </div>
 
         <!-- Nút Delete (Trash Bin Icon) -->
         <button id="deleteButton">
