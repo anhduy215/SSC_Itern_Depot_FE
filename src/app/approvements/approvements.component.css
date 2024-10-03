@@ -12,6 +12,15 @@
     display: block;
     padding: 20px;
 }
+#itemSelect{
+    width: 180px; /* Độ rộng của select */
+    height: 50px; /* Chiều cao của select */
+    font-size: 16px; /* Kích thước chữ */
+    padding: 5px; /* Khoảng cách giữa text và viền */
+    border-radius: 10px; /* Bo góc cho select */
+    border: 1px solid #ccc; /* Màu viền */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
 
 /* phần hiện thông tin thanh profile */
 .header {

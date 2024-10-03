@@ -10,27 +10,6 @@
     <div class="main">
       <!-- khung nút bấm -->
       <div class="actions">
-        <!-- Nút Add Container -->
-        <button id="addButton" (click)="toggleForm()">
-          <img src="assets/add.png" alt="Add Icon" class="icon" /> Add Container
-        </button>
-        <!-- gọi formfield add container -->
-        <div *ngIf="isFormVisible" class="form-container">
-          <app-form-field (cancel)="onCancel()"></app-form-field> <!-- Gọi FormFieldComponent ở đây -->
-        </div>
-
-        <!-- Nút Delete (Trash Bin Icon) -->
-        <button id="deleteButton" (click)="openDeleteConfirmation()">
-          <img src="assets/trashbin.png" alt="Delete Icon" class="icon" /> Delete All Selected
-        </button>
-
-        <div class="popup" [class.show]="isPopupVisible">
-          <p>Confirm delete</p>
-          <div class="popup-content">
-            <button (click)="cancelDelete()">Cancel</button>
-            <button (click)="confirmDelete()">OK</button>
-          </div>
-        </div>
 
         <!-- Khung Search -->
         <div class="search-box">
@@ -43,43 +22,59 @@
       <!-- bảng quản lý -->
       <div class="management">
         <header>
-          <div class="header-item checkbox">
+          <!-- <div class="header-item checkbox">
             <input type="checkbox" id="selectAll" (change)="toggleSelectAll($event)"/>
-          </div>
-          <div class="header-item1">ISO Code</div>
-          <div class="header-item2">Owner</div>
-          <div class="header-item3">Line Operator</div>
-          <div class="header-item4" (click)="sortBySize()">Size
+          </div> -->
+          <div class="header-item">Container Number</div>
+          <div class="header-item">ISO</div>
+          <div class="header-item">Owner</div>
+          <div class="header-item" (click)="sortBySize()">Size
             <img src="assets/sortarrow.png" class="sortarrow" [class.ascending]="isAscending">
           </div>
-          <div class="header-item5">Position</div>
+          <div class="header-item">Type</div>
+          <div class="header-item">Maximum Weight</div>
+          <div class="header-item">Tare Weight</div>
+          <div class="header-item">Date Manufacture</div>
+          <div class="header-item">Position</div>
+          <div class="header-item">Container Status</div>
+          <div class="header-item">Status</div>
         </header>
 
         <body>
           <div *ngFor="let data of paginated" class="body-row">
             <div class="item-layout">
-              <div class="body-item checkbox">
+              <!-- <div class="body-item checkbox">
                 <input type="checkbox" id="select" [checked]="data.selected" (change)="toggleCheckbox(data)"/>
-              </div>
-              <div class="body-item">{{ data.isoCode }}</div>
-              <div class="body-item">{{ data.owner }}</div>
-              <div class="body-item">{{ data.lineOperator }}</div>
-              <div class="body-item">{{ data.size }}</div>
-              <div class="body-item">{{ data.position }}</div>
-              <div class="iconbtn">
-                <img src="assets/trashbin.png" class="delete-item" (click)="openDeleteConfirmation()">
-                <img src="assets/pen.png" class="update-item" (click)="toggleForm()">
-              </div>
+              </div> -->
+              <div class="body-item" (click)="showModal(data.containerNumber)">{{data.containerNumber}}</div>
+              <div class="body-item" (click)="showModal(data.isoCode)">{{data.isoCode}}</div>
+              <div class="body-item" (click)="showModal(data.owner)">{{data.owner}}</div>
+              <div class="body-item" (click)="showModal(data.size.toString())">{{data.size}}</div>
+              <div class="body-item" (click)="showModal(data.type)">{{data.type}}</div>
+              <div class="body-item" (click)="showModal(data.maxWeight.toString())">{{data.maxWeight}}</div>
+              <div class="body-item" (click)="showModal(data.tareWeight.toString())">{{data.tareWeight}}</div>
+              <div class="body-item" (click)="showModal(data.dateManufacture.toString())">{{data.dateManufacture}}</div>
+              <div class="body-item" (click)="showModal(data.position)">{{data.position}}</div>
+              <div class="body-item" (click)="showModal(data.containerStatus)">{{data.containerStatus}}</div>
+              <div class="body-item" (click)="showModal(data.status)">{{data.status}}</div>
+              <div class="iconbtn"></div>
             </div>
           </div>
-        </body>
-
-        <footer>
-          <button (click)="previousPage()" [disabled]="currentPage === 1" class="btn previousbtn">Previous</button>
-          <div class="footer-item">Page {{ currentPage }} of {{ totalPages }}</div>
-          <button (click)="nextPage()" [disabled]="currentPage === totalPages" class="btn nextbtn">Next</button>
-        </footer>
+      <!-- Modal -->
+      <div id="modal" class="modal" style="display:none;">
+        <div class="modal-content">
+          <span class="close" (click)="closeModal()">&times;</span>
+          <p id="modal-text"></p>
+        </div>
       </div>
+      </body>
+
+      <footer>
+        <button (click)="previousPage()" [disabled]="currentPage === 1" class="btn previousbtn">Previous</button>
+        <div class="footer-item">Page {{ currentPage }} of {{ totalPages }}</div>
+        <button (click)="nextPage()" [disabled]="currentPage === totalPages" class="btn nextbtn">Next</button>
+      </footer>
     </div>
   </div>
+</div>
 </div>

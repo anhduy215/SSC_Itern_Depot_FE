@@ -14,18 +14,19 @@ import { CommonModule } from '@angular/common';
 export class ContainerComponent {
   isAscending = true;
   currentPage = 1;
-  itemsPerPage = 5;
+  itemsPerPage = 6;
   //data mẫu xóa sau khi có api
   dataSample = [
-    { isoCode: 'ABC123', owner: 'Company A', lineOperator: 'Operator A', size: 20, position: 'Block 1: B1, R1, T1', selected: false },
-    { isoCode: 'XYZ456', owner: 'Company B', lineOperator: 'Operator B', size: 30, position: 'Block 2: B2, R2, T2', selected: false },
-    { isoCode: 'LMN789', owner: 'Company C', lineOperator: 'Operator C', size: 40, position: 'Block 3: B3, R3, T3', selected: false },
-    { isoCode: 'LMN789', owner: 'Company D', lineOperator: 'Operator C', size: 50, position: 'Block 3: B3, R3, T3', selected: false },
-    { isoCode: 'LMN789', owner: 'Company E', lineOperator: 'Operator C', size: 60, position: 'Block 3: B3, R3, T3', selected: false },
-    { isoCode: 'LMN789', owner: 'Company F', lineOperator: 'Operator C', size: 70, position: 'Block 3: B3, R3, T3', selected: false },
-    { isoCode: 'LMN789', owner: 'Company G', lineOperator: 'Operator C', size: 80, position: 'Block 3: B3, R3, T3', selected: false },
-    { isoCode: 'LMN789', owner: 'Company H', lineOperator: 'Operator C', size: 100, position: 'Block 3: B3, R3, T3', selected: false },
-  ];
+    { containerNumber: 'C123', isoCode: 'ABC123', owner: 'Company A', size: 20, type: 'Type A', maxWeight: 2000, tareWeight: 1500, dateManufacture: '2023-01-01', position: 'Block 1: B1, R1, T1', containerStatus: 'Available', status: 'inpot' },
+    { containerNumber: 'C456', isoCode: 'XYZ456', owner: 'Company B', size: 30, type: 'Type B', maxWeight: 3000, tareWeight: 2500, dateManufacture: '2023-02-01', position: 'Block 2: B2, R2, T2', containerStatus: 'In Use', status: 'inpot' },
+    { containerNumber: 'C789', isoCode: 'LMN789', owner: 'Company C', size: 40, type: 'Type C', maxWeight: 4000, tareWeight: 3500, dateManufacture: '2023-03-01', position: 'Block 3: B3, R3, T3', containerStatus: 'Under Maintenance', status: 'inpot' },
+    { containerNumber: 'C101', isoCode: 'LMN101', owner: 'Company D', size: 50, type: 'Type D', maxWeight: 4500, tareWeight: 4000, dateManufacture: '2023-04-01', position: 'Block 4: B4, R4, T4', containerStatus: 'Available', status: 'inpot' },
+    { containerNumber: 'C102', isoCode: 'LMN102', owner: 'Company E', size: 60, type: 'Type E', maxWeight: 5000, tareWeight: 4500, dateManufacture: '2023-05-01', position: 'Block 5: B5, R5, T5', containerStatus: 'In Use', status: 'inpot' },
+    { containerNumber: 'C103', isoCode: 'LMN103', owner: 'Company F', size: 70, type: 'Type F', maxWeight: 5500, tareWeight: 5000, dateManufacture: '2023-06-01', position: 'Block 6: B6, R6, T6', containerStatus: 'Under Maintenance', status: 'inpot' },
+    { containerNumber: 'C104', isoCode: 'LMN104', owner: 'Company G', size: 80, type: 'Type G', maxWeight: 6000, tareWeight: 5500, dateManufacture: '2023-07-01', position: 'Block 7: B7, R7, T7', containerStatus: 'Available', status: 'inpot' },
+    { containerNumber: 'C105', isoCode: 'LMN105', owner: 'Company H', size: 100, type: 'Type H', maxWeight: 7000, tareWeight: 6500, dateManufacture: '2023-08-01', position: 'Block 8: B8, R8, T8', containerStatus: 'In Use', status: 'inpot' }
+];
+
   
 
   //tính cắt từ start nào tới end cho trang đó
@@ -62,50 +63,23 @@ export class ContainerComponent {
     });
     this.currentPage = 1;
   }
-  //gọi formfield
-  isFormVisible = false;
+  showModal(text: string) {
+    const modalTextElement = document.getElementById('modal-text');
+    if (modalTextElement) { // Kiểm tra xem phần tử có tồn tại hay không
+        modalTextElement.innerText = text; // Cập nhật nội dung modal
+    }
+    const modalElement = document.getElementById('modal');
+    if (modalElement) { // Kiểm tra xem phần tử có tồn tại hay không
+        modalElement.style.display = "block"; // Hiển thị modal
+    }
+}
 
-  toggleForm() {
-    this.isFormVisible = !this.isFormVisible;
-  }
-  onCancel() {
-    this.isFormVisible = false; // Ẩn form khi cancel
-  }
+closeModal() {
+    const modalElement = document.getElementById('modal');
+    if (modalElement) { // Kiểm tra xem phần tử có tồn tại hay không
+        modalElement.style.display = "none"; // Ẩn modal
+    }
+}
 
-  // Toggle Select All checkboxes
-  allSelected: boolean = false;
-  
-  toggleSelectAll(event: any) {
-    this.allSelected = event.target.checked;
-    this.paginated.forEach(item => item.selected = this.allSelected);
-  }
 
-  // Toggle individual checkbox
-  toggleCheckbox(data: any) {
-    data.selected = !data.selected;
-    this.allSelected = this.paginated.every(item => item.selected);
-  }
-  //pop up xóa
-  isPopupVisible: boolean = false;
-
-  // Mở popup khi bấm nút "Delete All Selected"
-  openDeleteConfirmation() {
-    this.isPopupVisible = !this.isPopupVisible;
-  }
-
-  // Xác nhận xóa
-  confirmDelete() {
-    this.isPopupVisible = false;
-    // Thực hiện logic xóa tại đây
-    this.deleteSelectedItems();
-  }
-
-  // Hủy xóa và đóng popup
-  cancelDelete() {
-    this.isPopupVisible = false;
-  }
-
-  // Hàm xóa các item đã chọn
-  deleteSelectedItems() {
-  }
 }

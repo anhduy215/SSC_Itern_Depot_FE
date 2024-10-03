@@ -5,13 +5,13 @@ import { CommonModule } from '@angular/common';
 import { FormcommandComponent } from '../formcommand/formcommand.component';
 
 @Component({
-  selector: 'app-command',
+  selector: 'app-register',
   standalone: true,
   imports: [CommonModule, RouterOutlet, SidebarComponent, FormcommandComponent],
-  templateUrl: './command.component.html',
-  styleUrl: './command.component.css'
+  templateUrl: './register.component.html',
+  styleUrl: './register.component.css'
 })
-export class CommandComponent {
+export class RegisterComponent {
   isAscending = true;
   currentPage = 1;
   itemsPerPage = 5;

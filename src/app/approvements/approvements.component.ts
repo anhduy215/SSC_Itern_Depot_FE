@@ -2,15 +2,16 @@ import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { SidebarComponent } from '../sidebar/sidebar.component';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-inout',
   standalone: true,
-  imports: [CommonModule, RouterOutlet, SidebarComponent],
-  templateUrl: './inout.component.html',
-  styleUrl: './inout.component.css'
+  imports: [FormsModule, CommonModule, RouterOutlet, SidebarComponent],
+  templateUrl: './approvements.component.html',
+  styleUrl: './approvements.component.css'
 })
-export class InoutComponent {
+export class ApprovementsComponent {
   isAscending = true;
   currentPage = 1;
   itemsPerPage = 5;
@@ -98,6 +99,19 @@ export class InoutComponent {
 
   // Hàm xóa các item đã chọn
   deleteSelectedItems() {
+  }
+
+  items = [
+    { value: 1, label: 'Import' },
+    { value: 2, label: 'Export' },
+  ];
+
+  selectedItem: number | null = null;
+  confirmedItem: number | null = null;
+
+  confirmSelection() {
+    // Xác nhận lựa chọn và lưu giá trị
+    this.confirmedItem = this.selectedItem;
   }
 }
 
