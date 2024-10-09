@@ -1,0 +1,85 @@
+<div class="form-register">
+  <form [formGroup]="containerForm" (ngSubmit)="onSubmit()">
+
+    <!-- Input for Container Number -->
+    <label for="containerNumber">Container Number:</label>
+    <input id="containerNumber" formControlName="containerNumber" type="text"
+      placeholder="Enter Container number" /><br />
+
+    <label for="iso">ISO:</label>
+    <input id="iso" formControlName="iso" type="text" placeholder="Enter iso" /><br />
+
+    <label for="owner">Owner:</label>
+    <select id="owner" formControlName="owner">
+      <option value="owner1">owner 1</option>
+      <option value="owner2">owner 2</option>
+    </select><br />
+
+    <label for="size">Size:</label>
+    <select id="size" formControlName="size">
+      <option value="20">20</option>
+      <option value="40">40</option>
+      <option value="45">45</option>
+    </select><br />
+
+    <label for="containerType">Container Type:</label>
+    <select id="containerType" formControlName="containerType">
+      <option value="1">type1</option>
+      <option value="2">type2</option>
+
+    </select><br />
+
+    <!-- Date Picker for Manufacturer Date -->
+    <label for="manufacturerDate">Manufacturer Date:</label>
+    <input id="manufacturerDate" formControlName="manufacturerDate" type="date" /><br />
+
+    <!-- Input for Maximum Weight -->
+    <label for="maxWeight">Maximum Weight:</label>
+    <input id="maxWeight" formControlName="maxWeight" type="number" placeholder="Enter Maximum Weight" /><br />
+
+    <!-- Input for Tare Weight -->
+    <label for="tareWeight">Tare Weight:</label>
+    <input id="tareWeight" formControlName="tareWeight" type="number" placeholder="Enter Tare Weight" /><br />
+
+    <label for="containerStatus">Container Status:</label>
+    <input id="containerStatus" formControlName="containerStatus" type="text" placeholder="Enter status" /><br />
+
+    <label for="containerStatus">Full Container Status:</label>
+    <select id="containerStatus" formControlName="containerStatus">
+      <option value="Full">Full</option>
+      <option value="Empty">Empty</option>
+    </select><br />
+
+    <label for="customerName">Customer Name:</label>
+    <input id="customerName" formControlName="customerName" type="text" placeholder="Customer Name" /><br />
+
+    <label for="taxCode">Tax Code:</label>
+    <input id="taxCode" formControlName="taxCode" type="text" placeholder="Tax Code" /><br />
+
+    <label for="lineOperator">Line Operator:</label>
+    <select id="lineOperator" formControlName="lineOperator">
+      <option value="lineOperator1">lineOperator 1</option>
+      <option value="lineOperator2">lineOperator 2</option>
+    </select><br />
+
+    <label for="licensePlate">Vehicle License Plate:</label>
+    <input id="licensePlate" formControlName="licensePlate" type="text" placeholder="License" /><br />
+
+    <label for="movement" >Eir Type:</label>
+    <select id="movement" formControlName="movement" (change)="onEirTypeChange($event)">
+      <option value="Import">Import</option>
+      <option value="Export">Export</option>
+    </select><br />
+
+    <div class="deadlineform" *ngIf="showDeadline">
+      <label for="deadline">Deadline:</label>
+      <input id="deadline" formControlName="deadline" type="date" />
+    </div>
+    
+    <!-- Submit Button -->
+    <div class="button">
+      <button class="cancelbtn" type="cancel" (click)="cancelForm()">Cancel</button>
+      <button class="submitbtn" type="submit" [disabled]="containerForm.invalid">Submit</button>
+    </div>
+  </form>
+</div>

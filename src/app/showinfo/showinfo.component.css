@@ -1,0 +1,23 @@
+.form-show h2{
+  text-align: center;
+}
+.form-info {
+  display: flex;
+  justify-content: space-around;
+}
+
+.form-left, .form-right {
+  width: 400px;
+  height: 370px;
+  background-color: #FDF9F9;
+  border: 1px solid #000000;
+  margin-bottom: 20px;
+}
+
+.form-left div, .form-right div {
+  margin-left: 10px;
+}
+.form-right div{
+  margin-top: 5px;
+  margin-bottom: 10px;
+}

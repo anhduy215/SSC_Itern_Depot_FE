@@ -38,6 +38,17 @@
     margin-bottom: 2px;
 }
 
+#itemSelect{
+    width: 180px;
+    height: 50px;
+    font-size: 16px; 
+    padding: 5px;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-right: 10px;
+}
+
 #addButton {
     background-color: #000AFF;
     border: #7280FF;
@@ -139,23 +150,29 @@
 }
 
 .header-item1 {
-    margin-right: 70px;
-}
-
-.header-item2 {
-    margin-right: 130px;
-}
-
-.header-item3 {
-    margin-right: 80px;
-}
-
-.header-item4 {
     margin-right: 50px;
 }
 
+.header-item2 {
+    margin-right: 40px;
+}
+
+.header-item3 {
+    margin-right: 70px;
+}
+
+.header-item4 {
+    margin-right: 25px;
+}
+
 .header-item5 {
-    margin-right: 105px;
+    margin-right: 80px;
+}
+.header-item6 {
+    margin-right: 60px;
+}
+.header-item7 {
+    margin-right: 60px;
 }
 
 .sortarrow {
@@ -186,11 +203,12 @@
 .body-item:not(:first-child) {
     flex: 1;
     width: auto;
-    max-width: 200px;
+    max-width: 150px;
 }
 
 .delete-item,
-.update-item {
+.update-item,
+.show-item {
     height: 20px;
     width: 20px;
     margin: 10px;
@@ -275,3 +293,23 @@
 .popup-content button:hover {
     background-color: #003f5a;
 }
+
+/* show info */
+.popup-showinfo {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Màu nền mờ */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000; /* Đảm bảo popup nằm trên các phần tử khác */
+  }
+
+  
+  /* Ẩn popup nếu không cần thiết */
+  .popup-overlay:not(.show) {
+    display: none;
+  }

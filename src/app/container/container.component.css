@@ -130,6 +130,7 @@
     height: 40px;
     flex-wrap: nowrap;
 }
+/* di chuột hiển thị */
 .modal {
     display: none; /* Ẩn modal theo mặc định */
     position: fixed; /* Ở vị trí cố định */

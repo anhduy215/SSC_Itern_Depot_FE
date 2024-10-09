@@ -11,13 +11,21 @@
     <div class="main">
       <!-- khung nút bấm -->
       <div class="actions">
-        <!-- Nút Add Container -->
+
+        <!-- Nút select -->
+        <div>
+          <select id="itemSelect" [(ngModel)]="selectedItem" (change)="filterData()">
+            <option *ngFor="let item of items" [value]="item.value">{{ item.label }}</option>
+          </select>
+        </div>
+
+        <!-- Nút Add phiếu eir -->
         <button id="addButton" (click)="toggleForm()">
-          <img src="assets/add.png" alt="Add Icon" class="icon" /> Add Command
+          <img src="assets/add.png" alt="Add Icon" class="icon" />Register Eir
         </button>
-        <!-- gọi formfield add container -->
+        <!-- gọi formfield add phiếu eir -->
         <div *ngIf="isFormVisible" class="form-container">
-          <app-formcommand (cancel)="onCancel()"></app-formcommand> <!-- Gọi FormFieldComponent ở đây -->
+          <app-formregister (cancel)="onCancel()"></app-formregister> <!-- Gọi FormFieldComponent ở đây -->
         </div>
 
         <!-- Nút Delete (Trash Bin Icon) -->
@@ -47,16 +55,16 @@
           <div class="header-item checkbox">
             <input type="checkbox" id="selectAll" (change)="toggleSelectAll($event)" />
           </div>
-          <div class="header-item1">Customer Name</div>
-          <div class="header-item2">Tax Code</div>
-          <div class="header-item3">Line Operator</div>
-          <div class="header-item4">Voyage Number</div>
-          <div class="header-item5" (click)="sortByQuantity()">Container Quantity
-            <img src="assets/sortarrow.png" class="sortarrow" [class.ascending]="sortField === 'quantity' && isAscending">
-          </div>
-          <div class="header-item6" (click)="sortByDate()">Deadline
+          <div class="header-item1">Eir number</div>
+          <div class="header-item2">Customer Name</div>
+          <div class="header-item3">Tax Code</div>
+          <div class="header-item4">Container Number</div>
+          <div class="header-item5">Vehicle</div>
+          <div class="header-item6">License Plate</div>
+          <div class="header-item7" (click)="sortByDate()">Deadline
             <img src="assets/sortarrow.png" class="sortarrow" [class.ascending]="sortField === 'date' && isAscending">
           </div>
+          <div class="header-item8">Type</div>
         </header>
 
         <body>
@@ -65,19 +73,26 @@
               <div class="body-item checkbox">
                 <input type="checkbox" id="select" [checked]="data.selected" (change)="toggleCheckbox(data)" />
               </div>
-              <div class="body-item">{{ data.customerName }}</div>
-              <div class="body-item">{{ data.taxCode }}</div>
-              <div class="body-item">{{ data.lineOperator }}</div>
-              <div class="body-item">{{ data.voyageNumber }}</div>
-              <div class="body-item">{{ data.containerQuantity }}</div>
-              <div class="body-item">{{ data.deadline }}</div>
+              <div class="body-item">{{data.eirNumber}}</div>
+              <div class="body-item">{{data.customerName}}</div>
+              <div class="body-item">{{data.taxCode}}</div>
+              <div class="body-item">{{data.containerNumber}}</div>
+              <div class="body-item">{{data.vehicle}}</div>
+              <div class="body-item">{{data.licensePlate}}</div>
+              <div class="body-item">{{data.deadline}}</div>
+              <div class="body-item">{{data.type}}</div>
               <div class="iconbtn">
-                <img src="assets/trashbin.png" class="delete-item"(click)="openDeleteConfirmation()">
+                <img src="assets/trashbin.png" class="delete-item" (click)="openDeleteConfirmation()">
                 <img src="assets/pen.png" class="update-item" (click)="toggleForm()">
+                <img src="assets/eye.png" class="show-item" (click)="showInfo()">
               </div>
             </div>
           </div>
         </body>
+
+        <div class="popup-showinfo" *ngIf="isShow" (click)="isShow = false">
+          <app-show></app-show>
+        </div>
 
         <footer>
           <button (click)="previousPage()" [disabled]="currentPage === 1" class="btn previousbtn">Previous</button>

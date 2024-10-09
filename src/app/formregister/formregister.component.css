@@ -1,13 +1,14 @@
-.form-container {
+.form-register {
     padding: 20px;
     width: 300px;
     margin: 20px auto;
+    max-height: 400px; /* Chiều cao tối đa cho form */
+  overflow-y: auto;
   }
   
   form {
     display: flex;
     flex-direction: column;
-    /* Sắp xếp các trường theo cột */
   }
   select{
     padding: 10px;
@@ -20,24 +21,14 @@
     border-radius: 4px;
   }
   
-  .iso {
-    display: flexbox;
-    justify-content: center;
-    align-items: center;
+  .containerNumber {
+    margin-bottom: 10px;
   }
   
-  .iso button {
-    margin-left: 10px;
-    background: none;
-    cursor: pointer;
-    border: none;
+  .deadlineform{
+    display: flex;
+    flex-direction: column;
   }
-  
-  .iso button img {
-    width: 18px;
-    height: 18px;
-  }
-  
   /*nút bấm*/
   .button {
     display: flex;
