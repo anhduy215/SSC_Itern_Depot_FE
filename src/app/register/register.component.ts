@@ -5,6 +5,8 @@ import { CommonModule } from '@angular/common';
 import { FormregisterComponent } from '../formregister/formregister.component';
 import { ShowinfoComponent } from '../showinfo/showinfo.component';
 import { FormsModule } from '@angular/forms';
+import { ApiService } from '../services/api.service';
+
 
 @Component({
   selector: 'app-register',
@@ -22,32 +24,41 @@ export class RegisterComponent {
   isShow: boolean = false;
   selectedItem: number | null = 1; // Mặc định là 'All'
 
-  //data mẫu xóa sau khi có api
-  dataSample = [
-    { eirNumber: 'EIR001', customerName: 'Company A', taxCode: '12345', containerNumber: 'ABCD1234567', vehicle: 'Truck A', licensePlate: '29A-12345', deadline: '2024-09-30', type: 'Import', selected: false },
-    { eirNumber: 'EIR002', customerName: 'Company B', taxCode: '67890', containerNumber: 'EFGH2345678', vehicle: 'Truck B', licensePlate: '30B-67890', deadline: '2024-10-01', type: 'Import', selected: false },
-    { eirNumber: 'EIR003', customerName: 'Company C', taxCode: '54321', containerNumber: 'IJKL3456789', vehicle: 'Truck C', licensePlate: '79C-11111', deadline: '2024-10-05', type: 'Import', selected: false },
-    { eirNumber: 'EIR004', customerName: 'Company D', taxCode: '98765', containerNumber: 'MNOP4567890', vehicle: 'Truck D', licensePlate: '65D-54321', deadline: '2024-10-10', type: 'Export', selected: false },
-    { eirNumber: 'EIR005', customerName: 'Company E', taxCode: '11223', containerNumber: 'QRST5678901', vehicle: 'Truck E', licensePlate: '51E-99999', deadline: '2024-11-01', type: 'Import', selected: false },
-    { eirNumber: 'EIR006', customerName: 'Company F', taxCode: '44556', containerNumber: 'UVWX6789012', vehicle: 'Truck F', licensePlate: '35F-88888', deadline: '2024-11-05', type: 'Export', selected: false },
-    { eirNumber: 'EIR007', customerName: 'Company G', taxCode: '77889', containerNumber: 'YZAB7890123', vehicle: 'Truck G', licensePlate: '40G-77777', deadline: '2024-12-01', type: 'Import', selected: false }
-  ];
+  //call api get toàn bộ eir
+  eirList: any[] = [];
+  constructor(private apiService: ApiService) {}
+  
+  ngOnInit() {
+    this.loadEirs(); // Lấy danh sách EIRs khi component khởi tạo
+  }
+
+  loadEirs() {
+    this.apiService.getEirs()
+      .then(data => {
+        this.eirList = data; // Lưu dữ liệu vào eirList
+        this.filteredData = [...this.eirList]; // Cập nhật filteredData
+      })
+      .catch(error => {
+        console.error('Error loading EIRs:', error);
+      });
+  }
+
   items = [
     { value: 1, label: 'All' },
     { value: 2, label: 'Import' },
     { value: 3, label: 'Export' },
   ];
 
-  filteredData = [...this.dataSample];
+  filteredData = [...this.eirList];
 
   // Phương thức lọc dựa trên selectedItem
   filterData() {
     if (this.selectedItem == 1) {
-      this.filteredData = [...this.dataSample]; // Hiển thị tất cả
+      this.filteredData = [...this.eirList];
     } else if (this.selectedItem == 2) {
-      this.filteredData = this.dataSample.filter(data => data.type === 'Import'); // Lọc Import
+      this.filteredData = this.eirList.filter(data => data.eirType == 'Import');
     } else if (this.selectedItem == 3) {
-      this.filteredData = this.dataSample.filter(data => data.type === 'Export'); // Lọc Export
+      this.filteredData = this.eirList.filter(data => data.eirType == 'Export');
     }
     // Reset lại trang về 1 sau khi lọc
     this.currentPage = 1;

@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { SidebarComponent } from '../sidebar/sidebar.component';
 import { CommonModule } from '@angular/common';
+import { ApiService } from '../services/api.service';
 
 @Component({
   selector: 'app-container',
@@ -15,29 +16,41 @@ export class ContainerComponent {
   currentPage = 1;
   itemsPerPage = 6;
   //data mẫu xóa sau khi có api
-  dataSample = [
-    { containerNumber: 'C123', isoCode: 'ABC123', owner: 'Company A', size: 20, type: 'Type A', maxWeight: 2000, tareWeight: 1500, dateManufacture: '2023-01-01', position: 'Block 1: B1, R1, T1', containerStatus: 'bay nắp', status: 'InBlock' },
-    { containerNumber: 'C456', isoCode: 'XYZ456', owner: 'Company B', size: 30, type: 'Type B', maxWeight: 3000, tareWeight: 2500, dateManufacture: '2023-02-01', position: 'Block 2: B2, R2, T2', containerStatus: 'thủng trần, bể đáy, tróc sơn', status: 'InBlock' },
-    { containerNumber: 'C789', isoCode: 'LMN789', owner: 'Company C', size: 40, type: 'Type C', maxWeight: 4000, tareWeight: 3500, dateManufacture: '2023-03-01', position: 'Block 3: B3, R3, T3', containerStatus: 'nát', status: 'InBlock' },
-    { containerNumber: 'C101', isoCode: 'LMN101', owner: 'Company D', size: 50, type: 'Type D', maxWeight: 4500, tareWeight: 4000, dateManufacture: '2023-04-01', position: 'Block 4: B4, R4, T4', containerStatus: 'abc', status: 'Complete' },
-    { containerNumber: 'C102', isoCode: 'LMN102', owner: 'Company E', size: 60, type: 'Type E', maxWeight: 5000, tareWeight: 4500, dateManufacture: '2023-05-01', position: 'Block 5: B5, R5, T5', containerStatus: 'abc', status: 'Complete' },
-    { containerNumber: 'C103', isoCode: 'LMN103', owner: 'Company F', size: 70, type: 'Type F', maxWeight: 5500, tareWeight: 5000, dateManufacture: '2023-06-01', position: 'Block 6: B6, R6, T6', containerStatus: 'abc', status: 'InBlock' },
-    { containerNumber: 'C104', isoCode: 'LMN104', owner: 'Company G', size: 80, type: 'Type G', maxWeight: 6000, tareWeight: 5500, dateManufacture: '2023-07-01', position: 'Block 7: B7, R7, T7', containerStatus: 'abc', status: 'InBlock' },
-    { containerNumber: 'C105', isoCode: 'LMN105', owner: 'Company H', size: 100, type: 'Type H', maxWeight: 7000, tareWeight: 6500, dateManufacture: '2023-08-01', position: 'Block 8: B8, R8, T8', containerStatus: 'abc', status: 'Complete' }
-  ];
+  data: any[] = []; // Tất cả container
+  filteredDataSample: any[] = []; // Danh sách container đã lọc theo điều kiện
 
+  constructor(private apiService: ApiService) { } // Inject ApiService vào constructor
 
+  ngOnInit() {
+    this.loadContainers(); // Gọi phương thức để tải dữ liệu khi component khởi tạo
+  }
+
+  // Phương thức tải dữ liệu từ API
+  loadContainers() {
+    this.apiService.getContainers().then(data => {
+      this.data = data; // Cập nhật biến dataSample với dữ liệu từ API
+      this.filterContainers();
+    }).catch(error => {
+      console.error('Error loading containers:', error); // Xử lý lỗi nếu có
+    });
+  }
+
+  // Lọc dữ liệu chỉ lấy những container có locationStatus === 'InBlock'
+  filterContainers() {
+    this.filteredDataSample = this.data.filter(container => container.locationStatus == 'InBlock');
+    this.paginated; // Gọi phân trang sau khi lọc
+  }
 
   //tính cắt từ start nào tới end cho trang đó
   get paginated() {
     const start = (this.currentPage - 1) * this.itemsPerPage;
     const end = start + this.itemsPerPage;
-    return this.dataSample.slice(start, end);
+    return this.filteredDataSample.slice(start, end);
   }
 
   //lấy tổng trang = tổng item chia max item mỗi trang
   get totalPages() {
-    return Math.ceil(this.dataSample.length / this.itemsPerPage);
+    return Math.ceil(this.filteredDataSample.length / this.itemsPerPage);
   }
 
   //page nhỏ hơn page tối đa thì thêm 1 còn page tối đa thì k chuyển dc nữa
@@ -57,7 +70,7 @@ export class ContainerComponent {
   // Hàm sắp xếp theo Size
   sortBySize() {
     this.isAscending = !this.isAscending; // Đảo ngược trạng thái sắp xếp
-    this.dataSample.sort((a, b) => {
+    this.filteredDataSample.sort((a, b) => {
       return this.isAscending ? a.size - b.size : b.size - a.size;
     });
     this.currentPage = 1;

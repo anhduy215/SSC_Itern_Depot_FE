@@ -41,25 +41,27 @@
         </header>
 
         <body>
-          <div *ngFor="let data of paginated" class="body-row">
+          <div *ngFor="let data of paginated">
+            <div class="body-row">
             <div class="item-layout">
               <!-- <div class="body-item checkbox">
                 <input type="checkbox" id="select" [checked]="data.selected" (change)="toggleCheckbox(data)"/>
               </div> -->
               <div class="body-item" (click)="showModal(data.containerNumber)">{{data.containerNumber}}</div>
-              <div class="body-item" (click)="showModal(data.isoCode)">{{data.isoCode}}</div>
-              <div class="body-item" (click)="showModal(data.owner)">{{data.owner}}</div>
+              <div class="body-item" (click)="showModal(data.iso)">{{data.iso}}</div>
+              <div class="body-item" (click)="showModal(data.ownerName)">{{data.ownerName}}</div>
               <div class="body-item" (click)="showModal(data.size.toString())">{{data.size}}</div>
-              <div class="body-item" (click)="showModal(data.type)">{{data.type}}</div>
-              <div class="body-item" (click)="showModal(data.maxWeight.toString())">{{data.maxWeight}}</div>
+              <div class="body-item" (click)="showModal(data.containerType)">{{data.containerType}}</div>
+              <div class="body-item" (click)="showModal(data.maximumWeight.toString())">{{data.maximumWeight}}</div>
               <div class="body-item" (click)="showModal(data.tareWeight.toString())">{{data.tareWeight}}</div>
-              <div class="body-item" (click)="showModal(data.dateManufacture.toString())">{{data.dateManufacture}}</div>
+              <div class="body-item" (click)="showModal(data.dateOfManufacture.toString())">{{data.dateOfManufacture | date: 'yyyy/MM/dd'}}</div>
               <div class="body-item" (click)="showModal(data.position)">{{data.position}}</div>
               <div class="body-item" (click)="showModal(data.containerStatus)">{{data.containerStatus}}</div>
-              <div class="body-item" (click)="showModal(data.status)">{{data.status}}</div>
+              <div class="body-item" (click)="showModal(data.locationStatus)">{{data.locationStatus}}</div>
               <div class="iconbtn"></div>
             </div>
           </div>
+        </div>
       <!-- Modal -->
       <div id="modal" class="modal" style="display:none;">
         <div class="modal-content">

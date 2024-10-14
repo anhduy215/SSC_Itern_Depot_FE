@@ -77,10 +77,10 @@
               <div class="body-item">{{data.customerName}}</div>
               <div class="body-item">{{data.taxCode}}</div>
               <div class="body-item">{{data.containerNumber}}</div>
-              <div class="body-item">{{data.vehicle}}</div>
+              <div class="body-item">{{data.vehicleTypeName}}</div>
               <div class="body-item">{{data.licensePlate}}</div>
-              <div class="body-item">{{data.deadline}}</div>
-              <div class="body-item">{{data.type}}</div>
+              <div class="body-item">{{data.deadline | date: 'yyyy/MM/dd'}}</div>
+              <div class="body-item">{{data.eirType}}</div>
               <div class="iconbtn">
                 <img src="assets/trashbin.png" class="delete-item" (click)="openDeleteConfirmation()">
                 <img src="assets/pen.png" class="update-item" (click)="toggleForm()">
